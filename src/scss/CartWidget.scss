@@ -1,0 +1,28 @@
+@import './master';
+
+.cart {
+  position: relative;
+  background-color: transparent;
+  cursor: pointer;
+  transition: scale 100ms linear;
+  &:hover {
+    scale: 1.1;
+  }
+  &__icon {
+    color: $white;
+  }
+  &__qty {
+    color: $black;
+    background-color: $accent;
+    border-radius: 20px;
+    font-size: 0.6rem;
+    position: absolute;
+    display: grid;
+    place-items: center;
+    font-weight: 900;
+    top: -5px;
+    right: -5px;
+    width: 15px;
+    height: 15px;
+  }
+}
