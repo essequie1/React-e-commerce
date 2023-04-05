@@ -1,0 +1,55 @@
+@import './master';
+
+.item {
+  padding: 15px 20px;
+  list-style-type: none;
+  transition: transform 50ms, outline 50ms;
+  outline: 1px solid transparent;
+  &:hover {
+    transform: scale(1.025);
+    outline: 1px solid rgb(0, 0, 0, 0.1);
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.images {
+  text-align: center;
+  img {
+    height: 250px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+}
+
+.description {
+  color: $black;
+  position: relative;
+  display: flex;
+  margin-top: 20px;
+  gap: 10px;
+  flex-direction: column;
+  &__title {
+    font-weight: 700;
+    text-align: left;
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &__category {
+    font-size: $sm;
+  }
+  &__price {
+    position: absolute;
+    width: 4rem;
+    text-align: center;
+    bottom: calc(100% + 20px);
+    right: 0;
+    background-color: $secondary;
+    font-size: $sm;
+    font-weight: 600;
+    line-height: $sm * 2;
+  }
+}

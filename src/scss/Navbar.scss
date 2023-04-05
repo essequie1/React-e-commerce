@@ -7,28 +7,38 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 500;
   img {
     height: 2rem;
     width: auto;
   }
-  nav {
-    display: flex;
-    gap: 3rem;
-    a {
-      font-size: 1rem;
-      text-decoration: none;
-      color: $white;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  &__link {
+    font-size: 1rem;
+    text-decoration: none;
+    color: $white;
+    font-weight: 600;
+    transition: color 200ms;
+    &--active {
       font-weight: 600;
-      transition: color 200ms;
-      &:hover {
-        color: $accent;
-      }
-      span {
-        font-size: 0.6rem;
-        color: red;
-        vertical-align: top;
-        font-weight: 900;
-      }
+      text-decoration: none;
+      color: $accent;
+    }
+    &:hover {
+      color: $accent;
+    }
+    span {
+      font-size: 0.6rem;
+      color: red;
+      vertical-align: top;
+      font-weight: 900;
     }
   }
 }
