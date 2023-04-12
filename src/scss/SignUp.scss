@@ -1,0 +1,85 @@
+@import './master';
+
+.signup-container {
+  border: 2px solid red;
+  width: 100svw;
+  height: calc(100svh - 7rem);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup {
+  display: grid;
+  grid-template-areas:
+    'name surname .'
+    'birth country city'
+    'address address zip'
+    'email email .'
+    'password password .'
+    '. small .'
+    '. button .';
+  border: 1px solid $grey;
+  padding: 20px;
+  border-radius: 5px;
+  gap: 20px 25px;
+  label {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: flex;
+    flex-direction: column;
+    &:nth-child(1) {
+      grid-area: name;
+    }
+    &:nth-child(2) {
+      grid-area: surname;
+    }
+    &:nth-child(3) {
+      grid-area: birth;
+    }
+    &:nth-child(4) {
+      grid-area: country;
+    }
+    &:nth-child(5) {
+      grid-area: city;
+    }
+    &:nth-child(6) {
+      grid-area: address;
+    }
+    &:nth-child(7) {
+      grid-area: zip;
+    }
+    &:nth-child(8) {
+      grid-area: email;
+    }
+    &:nth-child(9) {
+      grid-area: password;
+    }
+    input {
+      background-color: $grey;
+      border-radius: 25px;
+      padding: 5px 15px;
+      margin-top: 5px;
+      font-size: 1.15rem;
+    }
+  }
+  small {
+    text-align: center;
+    grid-area: small;
+  }
+  button {
+    justify-self: center;
+    grid-area: button;
+    background-color: $black;
+    font-weight: 600;
+    font-size: $md;
+    border-radius: 15px;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: $white;
+    width: fit-content;
+  }
+}

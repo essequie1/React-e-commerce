@@ -1,5 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import CartWidget from './CartWidget';
+import WishlistWidget from './WishlistWidget';
+import SessionWidget from './SessionWidget';
 import logo from '../assets/logo-light.svg';
 import '../scss/Navbar.scss';
 
@@ -10,22 +12,21 @@ const Navbar = () => {
         <img src={logo} alt="SARTORIAL" />
       </Link>
       <nav className="nav">
-        <NavLink className={({ isActive }) => (isActive ? 'nav__link--active' : 'nav__link')} to="/category/jewelery">
-          JEWELERY
+        <NavLink className={({ isActive }) => (isActive ? 'nav__link--active' : 'nav__link')} to="/category/tops">
+          TOPS
         </NavLink>
-        <NavLink className={({ isActive }) => (isActive ? 'nav__link--active' : 'nav__link')} to="/category/electronics">
-          ELECTRONICS
+        <NavLink className={({ isActive }) => (isActive ? 'nav__link--active' : 'nav__link')} to="/category/bottoms">
+          BOTTOMS
         </NavLink>
-        <NavLink className={({ isActive }) => (isActive ? 'nav__link--active' : 'nav__link')} to="/category/men's clothing">
-          MEN
+        <NavLink className={({ isActive }) => (isActive ? 'nav__link--active' : 'nav__link')} to="/category/accessories">
+          ACCESORIES
         </NavLink>
-        <NavLink className={({ isActive }) => (isActive ? 'nav__link--active' : 'nav__link')} to="/category/women's clothing">
-          WOMEN
+        <NavLink className={({ isActive }) => (isActive ? 'nav__link--active' : 'nav__link')} to="/category/shoes">
+          SHOES
         </NavLink>
-        {/* <a href="#">
-          SALE <span>HOT</span>
-        </a> */}
+        <WishlistWidget />
         <CartWidget />
+        <SessionWidget />
       </nav>
     </header>
   );

@@ -1,28 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import getApiData from '../services/fetchApi';
+import { getProducts } from '../services/firestore';
+import Loading from './Loading';
 import ItemDetail from './ItemDetail';
+import { productsContext } from '../context/productsContext';
 
 const ItemDetailContainer = () => {
-  const [product, setProduct] = useState();
+  const { selectedItem, unselectItem, filterById } = useContext(productsContext);
   const { pid } = useParams();
 
   useEffect(() => {
-    getApiData().then(data => {
-      const filteredProduct = data.filter(product => product.id === parseInt(pid));
-      setProduct(filteredProduct[0]);
-    });
+    filterById(pid);
+    return () => unselectItem();
   }, [pid]);
 
-  return (
-    <div className="item-detail-container">
-      {product ? (
-        <ItemDetail title={product.title} description={product.description} image={product.image} price={product.price} category={product.category} />
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
-  );
+  return <div className="item-detail-container">{Object.keys(selectedItem).length > 0 ? <ItemDetail product={selectedItem} /> : <Loading />}</div>;
 };
 
 export default ItemDetailContainer;

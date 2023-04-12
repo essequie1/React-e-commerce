@@ -2,9 +2,10 @@
 
 header {
   width: 100svw;
-  height: 6rem;
+  height: 7rem;
   background-color: $black;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 2rem;
   position: sticky;

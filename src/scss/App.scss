@@ -1,5 +1,16 @@
+@import './master';
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&display=swap');
 
+// Colors for toasts.
+:root {
+  --toastify-color-error: #e12727;
+  --toastify-color-success: #5dea70;
+  --toastify-color-info: #5a44d6;
+  --toastify-color-warning: #e5d420;
+  --toastify-color-dark: #090909;
+  --toastify-text-color-dark: #e8f1f2;
+  --toastify-toast-width: fit-content;
+}
 * {
   border: 0;
   margin: 0;
@@ -14,4 +25,9 @@
   flex-direction: column;
   width: 100svw;
   align-items: center;
+}
+
+// Styles for symbols
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
 }

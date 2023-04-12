@@ -1,25 +1,48 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { productsContext } from '../context/productsContext';
 import ItemList from './ItemList';
-import getApiData from '../services/fetchApi';
+import Loading from './Loading';
 import '../scss/ItemListContainer.scss';
 
 const ItemListContainer = () => {
-  const [apiData, setApiData] = useState();
+  const { data, cart, selectedCategory, filterByCategory } = useContext(productsContext);
   const { category } = useParams();
 
   useEffect(() => {
-    getApiData().then(data => {
-      if (category !== undefined) {
-        const filteredCategory = data.filter(product => product.category === category);
-        setApiData(filteredCategory);
-      } else {
-        setApiData(data);
-      }
-    });
+    filterByCategory(category);
   }, [category]);
 
-  return <div className="item-list-container">{apiData ? <ItemList apiData={apiData} /> : null}</div>;
+  // const addDataToDb = async () => {
+  //   await addDoc(collection(db, 'products'), {
+  //     brand: '',
+  //     category: '',
+  //     description: '',
+  //     gender: 'men',
+  //     price: 0,
+  //     title: '',
+  //     variations: {
+  //       black: {
+  //         color: '',
+  //         images: [],
+  //       },
+  //     },
+  //   });
+  // };
+
+  return (
+    <>
+      {data.length > 0 ? (
+        <div className="item-list-container">
+          <ItemList products={category === undefined ? data : selectedCategory} />
+          {/* <button onClick={addDataToDb}>añadir</button> */}
+          <button onClick={() => console.log(cart)}>LOGEAR CART</button>
+        </div>
+      ) : (
+        <Loading />
+      )}
+    </>
+  );
 };
 
 export default ItemListContainer;

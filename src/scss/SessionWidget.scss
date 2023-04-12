@@ -1,0 +1,40 @@
+@import './master';
+
+.session {
+  position: relative;
+  &__btn {
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    transition: scale 100ms linear;
+    &:hover {
+      scale: 1.1;
+    }
+  }
+  &__icon {
+    color: $white;
+  }
+  &__menu {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+    border: 1px solid $grey;
+    padding: 10px 5px;
+    top: 100%;
+    right: 50%;
+    border-radius: 5px;
+    button {
+      padding: 5px 10px;
+      width: fit-content;
+      color: $black;
+      background-color: transparent;
+      font-size: 1.1rem;
+      cursor: pointer;
+      &:hover {
+        font-weight: 600;
+      }
+    }
+  }
+}

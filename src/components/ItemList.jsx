@@ -1,11 +1,19 @@
 import Item from './Item';
 import '../scss/ItemList.scss';
 
-const ItemList = ({ apiData }) => {
+const ItemList = ({ products }) => {
   return (
     <ul className="item-list">
-      {apiData.map(item => (
-        <Item key={item.id} id={item.id} title={item.title} img={item.image} price={item.price} category={item.category} />
+      {products.map(product => (
+        <Item
+          key={product.id}
+          brand={product.brand}
+          gender={product.gender}
+          id={product.id}
+          price={product.price}
+          title={product.title}
+          variations={product.variations}
+        />
       ))}
     </ul>
   );
