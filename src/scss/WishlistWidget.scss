@@ -1,12 +1,15 @@
 @import './master';
 
 .wishlist-widget {
-  background-color: transparent;
-  color: $white;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  &:hover {
-    color: $accent;
+  position: relative;
+  button {
+    background-color: transparent;
+    color: $white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    &:hover {
+      color: $accent;
+    }
   }
 }

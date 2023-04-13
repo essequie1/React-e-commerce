@@ -11,7 +11,7 @@ const ItemListContainer = () => {
 
   useEffect(() => {
     filterByCategory(category);
-  }, [category]);
+  }, [category, data]);
 
   // const addDataToDb = async () => {
   //   await addDoc(collection(db, 'products'), {

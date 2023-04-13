@@ -21,36 +21,55 @@ const brands = {
 const ItemDetail = ({ product }) => {
   const { userData, wishlist, addToWishlist, removeFromWishlist } = useContext(userContext);
   const { addToCart } = useContext(productsContext);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState('');
   const [variation, setVariation] = useState(0);
 
   const variationsArr = Object.values(product?.variations);
-  const isItemInWishlist = wishlist.filter(productDB => productDB.id === product.id).length > 0;
+  const isItemInWishlist = wishlist.filter(productDB => productDB.id === product.id + variationsArr[variation].color).length > 0;
 
   const handleWishlist = prod => {
+    const { variations, gender, description, ...newItem } = product;
+
+    const itemToAdd = {
+      ...newItem,
+      image: variationsArr[variation].images[0],
+      color: variationsArr[variation].color,
+      selectedQuantity: 1,
+      id: product.id + variationsArr[variation].color,
+    };
+
     const notification = toast.loading('Loading...');
+
     if (isItemInWishlist) {
-      removeItemFromWishlist(userData.uid, prod)
-        .then(() => removeFromWishlist(prod.id))
+      removeItemFromWishlist(userData.uid, itemToAdd)
+        .then(() => removeFromWishlist(itemToAdd.id))
         .then(() => toast.update(notification, { render: 'Product removed from wishlist', type: 'success', autoClose: 3000, isLoading: false }));
     } else {
-      addItemToWishlist(userData.uid, prod)
-        .then(() => addToWishlist(prod))
+      addItemToWishlist(userData.uid, itemToAdd)
+        .then(() => addToWishlist(itemToAdd))
         .then(() => toast.update(notification, { render: 'Product added to wishlist', type: 'success', autoClose: 3000, isLoading: false }));
     }
   };
 
   const handleAddToCart = () => {
-    const itemToAdd = { ...product, image: variationsArr[variation].images[0], color: variationsArr[variation].color };
+    if (size === '') {
+      toast.error('Please select a size first');
+    } else {
+      const { variations, gender, description, ...newItem } = product;
 
-    delete itemToAdd.variations;
-    delete itemToAdd.description;
-    delete itemToAdd.gender;
-    delete itemToAdd.category;
+      const itemToAdd = {
+        ...newItem,
+        image: variationsArr[variation].images[0],
+        color: variationsArr[variation].color,
+        selectedSize: size,
+        selectedQuantity: quantity,
+        id: product.id + variationsArr[variation].color,
+      };
 
-    addToCart(itemToAdd);
-    toast.success('Product added to cart');
+      addToCart(itemToAdd);
+      toast.success('Product added to bag');
+    }
   };
 
   return (
@@ -79,7 +98,7 @@ const ItemDetail = ({ product }) => {
         </div>
         <div className="quantity">
           <p className="quantity__title">QUANTITY:</p>
-          <button className="quantity__btn" disabled={quantity < 1} onClick={() => setQuantity(curr => curr - 1)}>
+          <button className="quantity__btn" disabled={quantity < 2} onClick={() => setQuantity(curr => curr - 1)}>
             -
           </button>
           <p className="quantity__value">{quantity}</p>
@@ -99,7 +118,7 @@ const ItemDetail = ({ product }) => {
         </div>
         <div className="buttons">
           <button onClick={handleAddToCart} className="buttons__cart">
-            Add to cart
+            Add to bag
           </button>
           <button className="buttons__wishlist" onClick={() => handleWishlist(product)}>
             <span className={`material-symbols-outlined ${isItemInWishlist ? 'wishlisted' : 'not-wishlisted'}`}>favorite</span>

@@ -17,17 +17,11 @@ export const ProductsProvider = ({ children }) => {
     addToCart: product => {
       dispatch({ type: actions.ADD_PRODUCT, product });
     },
-    filterByCategory: category => {
-      dispatch({ type: actions.FILTER_BY_CATEGORY, category });
-    },
-    filterById: pid => {
-      dispatch({ type: actions.SELECT_ITEM, pid });
-    },
-    unselectItem: () => {
-      dispatch({ type: actions.UNSELECT_ITEM });
-    },
     removeFromCart: id => {
       dispatch({ type: actions.REMOVE_PRODUCT, id });
+    },
+    filterByCategory: category => {
+      dispatch({ type: actions.FILTER_BY_CATEGORY, category });
     },
   };
 

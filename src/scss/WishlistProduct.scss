@@ -1,0 +1,59 @@
+@import './master';
+
+.wishlist-product {
+  display: grid;
+  grid-template-areas:
+    'image title title'
+    'image  price buttons';
+  grid-template-columns: 5rem 1fr 1fr;
+  height: 6rem;
+  align-items: center;
+  justify-content: right;
+  gap: 5px 10px;
+  padding: 0.5rem;
+  border-bottom: 1px solid $grey;
+  &:nth-of-type(1) {
+    border-top: 1px solid $grey;
+  }
+  img {
+    grid-area: image;
+    object-fit: contain;
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid $grey;
+  }
+  h6 {
+    grid-area: title;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1rem;
+    text-align: left;
+    font-weight: 600;
+  }
+  p {
+    grid-area: price;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}
+
+.wishlist-buttons {
+  grid-area: buttons;
+  display: flex;
+  justify-self: right;
+  gap: 15px;
+  button {
+    span {
+      vertical-align: middle;
+      color: $black;
+      font-size: 1rem;
+      transform-origin: center;
+      transition: all 150ms;
+
+      &:hover {
+        scale: 1.1;
+      }
+    }
+  }
+}

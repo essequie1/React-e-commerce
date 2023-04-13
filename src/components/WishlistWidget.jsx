@@ -1,23 +1,17 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { userContext } from '../context/userContext';
+import { Wishlist } from './Wishlist';
 import '../scss/WishlistWidget.scss';
 
 const WishlistWidget = () => {
-  const { wishlist, userData } = useContext(userContext);
+  const [isWishlistShown, setIsWishlistShown] = useState(false);
+  const { userData } = useContext(userContext);
 
   return (
-    <>
-      <button className="wishlist-widget">WISHLIST</button>
-      {Object.keys(userData).length > 0 ? (
-        wishlist.length > 0 ? (
-          <h1>Tu wishlist es...</h1>
-        ) : (
-          <h1>Tu wishlist esta vacia</h1>
-        )
-      ) : (
-        <h1>You have to log in to see your wishlist</h1>
-      )}
-    </>
+    <div className="wishlist-widget">
+      <button onClick={() => setIsWishlistShown(curr => !curr)}>WISHLIST</button>
+      {isWishlistShown ? <>{Object.keys(userData).length > 0 ? <Wishlist /> : <h1>You have to log in to see your wishlist</h1>}</> : null}
+    </div>
   );
 };
 export default WishlistWidget;
