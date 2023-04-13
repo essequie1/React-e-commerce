@@ -1,8 +1,9 @@
+[![english](https://img.shields.io/static/v1?label=lang&message=english&color=green)](https://github.com/essequie1/React-e-commerce/blob/master/README.md)
+
 # SARTORIAL
 
 Sartorial es un proyecto de e-commerce para una tienda online ficticia. Fue creado para el curso de Desarrollo Frontend con React de [CoderHouse](https://www.coderhouse.com/) durante la cursada que fue desde el 7 de Marzo hasta el 27 de Abril del 2023.
 
-[![english](https://img.shields.io/static/v1?label=lang&message=english&color=green)](https://github.com/essequie1/React-e-commerce/blob/master/README.md)
 
 # 🛠️ **¡¡¡PROYECTO EN CONSTRUCCION!!!** 🛠️
 
