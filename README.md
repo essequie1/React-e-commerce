@@ -7,9 +7,9 @@ Sartorial is an e-commerce web application made for a fictitious clothing store.
 # 🛠️ **¡¡¡PROJECT IN DEVELOPMENT!!!** 🛠️
 
 Handovers were as follows:
-  - March 16th:** First pre-handover (Components).
-  - April 4th:** Second pre-handover (Routes).
-  - April 27th:** Final project.
+  - **March 16th:** First pre-handover (Components).
+  - **April 4th:** Second pre-handover (Routes).
+  - **April 27th:** Final project.
   
 ## 📚 Contents:
 
