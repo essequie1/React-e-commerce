@@ -30,13 +30,13 @@ Las entregas fueron las siguientes:
     - El checkout deberá mostrar los productos con las cantidades que eligió el usuario, el precio total de la orden, la opcion de agregar la información del usuario (nombre, apellido, telefono y mail con verificacion de este). Una vez realizado el proceso de Checkout, el usuario recibirá una "orderId" con la cual podrá verificar su orden en cualquier momento.
     
 ## 🕹️ Requisitos extra (opcionales)
-  - [ ] **Auth/Login:**
+  - [X] **Auth/Login:**
     - Implementar un servicio de autenticación proveido por Firebase.
     
-  - [ ] **Whislist:**
+  - [X] **Whislist:**
     - Permitir al usuario guardar productos en una lista de deseados y permitir que se acceda a ellos desde el navbar. Esta wishlist deberá permitir agregar los productos al carrito desde esta.
     
-  - [ ] **Custom Item:**
+  - [X] **Custom Item:**
     - El usuario debeá poder agregar caracteristicas extra al producto (talla, color, etc.). Esta customización no modificará el precio del producto, y deberá ser detallada en el checkout.
     
   - [ ] **Stock Check:**
@@ -45,7 +45,7 @@ Las entregas fueron las siguientes:
   - [ ] **Categorias dinámicas:**
     - Crear una colección para las categorias en firebase e hidratar el menú en base a eso.
     
-  - [ ] **Cart Persistente:**
+  - [X] **Cart Persistente:**
     - Hacer que el cart sea persistente utilizando localStorage o sessionStorage.
     
   - [ ] **Mis Ordenes:**
