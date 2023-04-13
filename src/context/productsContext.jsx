@@ -1,4 +1,4 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useEffect, useReducer } from 'react';
 import { reducer, initialState, actions } from '../hooks/useData';
 
 export const productsContext = createContext([]);
@@ -14,6 +14,9 @@ export const ProductsProvider = ({ children }) => {
     addData: data => {
       dispatch({ type: actions.ADD_DATA, data });
     },
+    getCartFromStorage: cart => {
+      dispatch({ type: actions.GET_CART_FROM_STORAGE, cart });
+    },
     addToCart: product => {
       dispatch({ type: actions.ADD_PRODUCT, product });
     },
@@ -24,6 +27,13 @@ export const ProductsProvider = ({ children }) => {
       dispatch({ type: actions.FILTER_BY_CATEGORY, category });
     },
   };
+
+  useEffect(() => {
+    if (state.cart === []) {
+      localStorage.getItem();
+    }
+    localStorage.setItem('sartorialCart', JSON.stringify(state.cart));
+  }, [state.cart]);
 
   return <productsContext.Provider value={value}>{children}</productsContext.Provider>;
 };

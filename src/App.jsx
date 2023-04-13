@@ -17,12 +17,13 @@ import './scss/App.scss';
 
 function App() {
   const { addUserData } = useContext(userContext);
-  const { addData } = useContext(productsContext);
+  const { addData, cart, getCartFromStorage } = useContext(productsContext);
 
   // This effect makes sure that the user data is persistent between page reloads, also loads the products from the database and saves them to context.
   // This occurs here as this data is spread with context through the whole app.
   useEffect(() => {
     getProducts().then(data => addData(data));
+
     const listener = onAuthStateChanged(auth, user => {
       if (user) {
         getUserData(user.uid).then(data => addUserData(data[0]));

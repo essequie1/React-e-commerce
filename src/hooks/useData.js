@@ -1,12 +1,18 @@
+const getLocalCartData = () => {
+  let localCart = localStorage.getItem('sartorialCart');
+  return JSON.parse(localCart);
+};
+
 export const initialState = {
   data: [],
-  cart: [],
+  cart: getLocalCartData(),
   selectedCategory: [],
 };
 
 export const actions = {
   ADD_DATA: 'ADD_DATA',
   ADD_PRODUCT: 'ADD_PRODUCT',
+  GET_CART_FROM_STORAGE: 'GET_CART_FROM_STORAGE',
   REMOVE_PRODUCT: 'REMOVE_PRODUCT',
   FILTER_BY_CATEGORY: 'FILTER_BY_CATEGORY',
 };
@@ -17,6 +23,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         data: action.data,
+      };
+    case actions.GET_CART_FROM_STORAGE:
+      return {
+        ...state,
+        cart: action.cart,
       };
     case actions.ADD_PRODUCT:
       return {

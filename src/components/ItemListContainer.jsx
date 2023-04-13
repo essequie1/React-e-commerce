@@ -1,5 +1,5 @@
 import { useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { json, useParams } from 'react-router-dom';
 import { productsContext } from '../context/productsContext';
 import ItemList from './ItemList';
 import Loading from './Loading';

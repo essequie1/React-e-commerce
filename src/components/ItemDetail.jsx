@@ -20,7 +20,7 @@ const brands = {
 
 const ItemDetail = ({ product }) => {
   const { userData, wishlist, addToWishlist, removeFromWishlist } = useContext(userContext);
-  const { addToCart } = useContext(productsContext);
+  const { addToCart, cart } = useContext(productsContext);
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState('');
   const [variation, setVariation] = useState(0);
@@ -28,7 +28,7 @@ const ItemDetail = ({ product }) => {
   const variationsArr = Object.values(product?.variations);
   const isItemInWishlist = wishlist.filter(productDB => productDB.id === product.id + variationsArr[variation].color).length > 0;
 
-  const handleWishlist = prod => {
+  const handleWishlist = () => {
     const { variations, gender, description, ...newItem } = product;
 
     const itemToAdd = {
