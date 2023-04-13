@@ -1,6 +1,8 @@
 # SARTORIAL
 Sartorial es un proyecto de e-commerce para una tienda online ficticia. Fue creado para el curso de Desarrollo Frontend con React de [CoderHouse](https://www.coderhouse.com/) durante la cursada que fue desde el 7 de Marzo hasta el 27 de Abril del 2023.
 
+# 🛠️ **¡¡¡PROYECTO EN CONSTRUCCION!!!** 🛠️
+
 Las entregas fueron las siguientes:
   - **16 de Marzo:** Primer pre-entrega (Componentes).
   - **4 de Abril:** Segunda pre-entrega (Rutas).
