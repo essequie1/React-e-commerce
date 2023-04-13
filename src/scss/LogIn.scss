@@ -1,0 +1,44 @@
+@import './master';
+
+.login {
+  width: 100svw;
+  height: calc(100svh - 7rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid $grey;
+    border-radius: 5px;
+    gap: 20px;
+    padding: 15px;
+    label {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      display: flex;
+      flex-direction: column;
+      input {
+        background-color: $grey;
+        border-radius: 25px;
+        padding: 5px 15px;
+        margin-top: 5px;
+        font-size: 1.15rem;
+      }
+    }
+  }
+  button {
+    justify-self: center;
+    grid-area: button;
+    background-color: $black;
+    font-weight: 600;
+    font-size: $md;
+    border-radius: 15px;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: $white;
+    width: fit-content;
+  }
+}

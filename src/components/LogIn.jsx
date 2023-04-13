@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { logIn } from '../services/auth';
 import { userContext } from '../context/userContext';
 import { getUserData } from '../services/firestore';
+import '../scss/LogIn.scss';
 
 const LogIn = () => {
   const { addUserData } = useContext(userContext);
@@ -34,8 +35,8 @@ const LogIn = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={e => handleSubmit(e)}>
+    <div className="login">
+      <form className="login__form" onSubmit={e => handleSubmit(e)}>
         <label>
           Email:
           <input value={formData.email} type="email" name="email" id="email" onChange={e => handleOnChange(e)} />
