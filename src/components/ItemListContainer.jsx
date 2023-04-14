@@ -1,12 +1,12 @@
-import { useEffect, useContext } from 'react';
-import { json, useParams } from 'react-router-dom';
-import { productsContext } from '../context/productsContext';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useProductsContext } from '../context/productsContext';
 import ItemList from './ItemList';
 import Loading from './Loading';
 import '../scss/ItemListContainer.scss';
 
 const ItemListContainer = () => {
-  const { data, cart, selectedCategory, filterByCategory } = useContext(productsContext);
+  const { data, cart, selectedCategory, filterByCategory } = useProductsContext();
   const { category } = useParams();
 
   useEffect(() => {

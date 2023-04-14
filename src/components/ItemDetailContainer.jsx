@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { productsContext } from '../context/productsContext';
+import { useProductsContext } from '../context/productsContext';
 import Loading from './Loading';
 import ItemDetail from './ItemDetail';
 
 const ItemDetailContainer = () => {
   const [selectedItem, setSelectedItem] = useState([]);
-  const { data } = useContext(productsContext);
+  const { data } = useProductsContext();
   const { pid } = useParams();
 
   useEffect(() => {

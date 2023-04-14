@@ -1,10 +1,10 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { auth } from './services/auth';
 import { onAuthStateChanged } from 'firebase/auth';
-import { userContext } from './context/userContext';
-import { productsContext } from './context/productsContext';
+import { useUserContext } from './context/userContext';
+import { useProductsContext } from './context/productsContext';
 import { getProducts, getUserData } from './services/firestore';
 import Navbar from './components/Navbar';
 import ItemListContainer from './components/ItemListContainer';
@@ -16,8 +16,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import './scss/App.scss';
 
 function App() {
-  const { addUserData } = useContext(userContext);
-  const { addData, cart, getCartFromStorage } = useContext(productsContext);
+  const { addUserData } = useUserContext();
+  const { addData } = useProductsContext();
 
   // This effect makes sure that the user data is persistent between page reloads, also loads the products from the database and saves them to context.
   // This occurs here as this data is spread with context through the whole app.

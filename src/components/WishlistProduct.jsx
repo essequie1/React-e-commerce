@@ -1,13 +1,12 @@
 import { toast } from 'react-toastify';
-import { useContext } from 'react';
-import { userContext } from '../context/userContext';
-import { productsContext } from '../context/productsContext';
+import { useUserContext } from '../context/userContext';
+import { useProductsContext } from '../context/productsContext';
 import { removeItemFromWishlist } from '../services/firestore';
 import '../scss/WishlistProduct.scss';
 
 const WishlistProduct = ({ product }) => {
-  const { userData, removeFromWishlist } = useContext(userContext);
-  const { addToCart } = useContext(productsContext);
+  const { userData, removeFromWishlist } = useUserContext();
+  const { addToCart } = useProductsContext();
 
   const handleRemove = () => {
     const notification = toast.loading('Removing...');

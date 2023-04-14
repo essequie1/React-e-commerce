@@ -1,10 +1,9 @@
-import { useContext } from 'react';
-import { userContext } from '../context/userContext';
+import { useUserContext } from '../context/userContext';
 import WishlistProduct from './WishlistProduct';
 import '../scss/Wishlist.scss';
 
 export const Wishlist = () => {
-  const { wishlist } = useContext(userContext);
+  const { wishlist } = useUserContext();
   return (
     <div className="wishlist">
       {wishlist.length > 0 ? (

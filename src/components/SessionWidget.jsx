@@ -1,11 +1,11 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { userContext } from '../context/userContext';
+import { useUserContext } from '../context/userContext';
 import '../scss/SessionWidget.scss';
 
 const SessionWidget = () => {
   const [isMenuShown, setIsMenuShown] = useState(false);
-  const { userData } = useContext(userContext);
+  const { userData } = useUserContext();
   const navigate = useNavigate();
 
   return (

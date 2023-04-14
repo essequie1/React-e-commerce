@@ -1,7 +1,9 @@
-import { createContext, useEffect, useReducer } from 'react';
+import { createContext, useContext, useEffect, useReducer } from 'react';
 import { reducer, initialState, actions } from '../hooks/useData';
 
-export const productsContext = createContext([]);
+const productsContext = createContext([]);
+
+export const useProductsContext = () => useContext(productsContext);
 
 export const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -29,7 +31,7 @@ export const ProductsProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (state.cart === []) {
+    if (state.cart == []) {
       localStorage.getItem();
     }
     localStorage.setItem('sartorialCart', JSON.stringify(state.cart));

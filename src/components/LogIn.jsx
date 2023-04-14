@@ -1,13 +1,13 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { logIn } from '../services/auth';
-import { userContext } from '../context/userContext';
+import { useUserContext } from '../context/userContext';
 import { getUserData } from '../services/firestore';
 import '../scss/LogIn.scss';
 
 const LogIn = () => {
-  const { addUserData } = useContext(userContext);
+  const { addUserData } = useUserContext();
   const [formData, setFormData] = useState({
     email: '',
     password: '',

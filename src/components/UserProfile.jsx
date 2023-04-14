@@ -1,12 +1,11 @@
-import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from '../services/auth';
-import { userContext } from '../context/userContext';
+import { useUserContext } from '../context/userContext';
 import Loading from './Loading';
 import '../scss/UserProfile.scss';
 
 const UserProfile = () => {
-  const { userData, removeUserData } = useContext(userContext);
+  const { userData, removeUserData } = useUserContext();
   const navigate = useNavigate();
 
   const handleLogOut = async () => {

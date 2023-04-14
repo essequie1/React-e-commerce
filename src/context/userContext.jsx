@@ -1,7 +1,9 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useContext, useReducer } from 'react';
 import { reducer, initialState, actions } from '../hooks/useUser';
 
-export const userContext = createContext([]);
+const userContext = createContext([]);
+
+export const useUserContext = () => useContext(userContext);
 
 export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);

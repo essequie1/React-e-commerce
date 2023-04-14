@@ -1,0 +1,78 @@
+@import './master';
+
+.cart-container {
+  display: grid;
+  grid-template-areas: 'title button' 'products products';
+  grid-template-rows: 3rem 1fr;
+  gap: 20px;
+  position: absolute;
+  z-index: 4000;
+  width: 400px;
+  height: 100svh;
+  background-color: white;
+  border-left: 1px solid $grey;
+  box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 100%;
+  transition: all 150ms;
+  padding: 15px;
+  button {
+    grid-area: button;
+    height: 2rem;
+    width: 2rem;
+    background-color: transparent;
+    cursor: pointer;
+    justify-self: end;
+    align-self: center;
+    span {
+      font-size: 2rem;
+      vertical-align: middle;
+      transform-origin: center;
+      transition: all 150ms;
+      &:hover {
+        scale: 1.1;
+      }
+    }
+  }
+  &__title {
+    grid-area: title;
+    font-weight: 600;
+    font-size: $md;
+    align-self: center;
+  }
+  &__products {
+    grid-area: products;
+    height: 100%;
+  }
+}
+
+.--active {
+  animation: showMenu 200ms forwards;
+}
+.--inactive {
+  animation: hideMenu 200ms forwards;
+}
+
+@keyframes showMenu {
+  0% {
+    display: block;
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-400px);
+  }
+}
+
+@keyframes hideMenu {
+  0% {
+    transform: translateX(-400px);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  100% {
+    display: none;
+  }
+}

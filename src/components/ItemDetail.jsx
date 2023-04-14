@@ -1,13 +1,13 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import bapeLogo from '../assets/brands/bape.png';
 import offwhiteLogo from '../assets/brands/off-white.png';
 import supremeLogo from '../assets/brands/supreme.png';
 import obeyLogo from '../assets/brands/obey.png';
 import { toast } from 'react-toastify';
 import { addItemToWishlist, removeItemFromWishlist } from '../services/firestore';
-import { userContext } from '../context/userContext';
+import { useUserContext } from '../context/userContext';
 import '../scss/ItemDetail.scss';
-import { productsContext } from '../context/productsContext';
+import { useProductsContext } from '../context/productsContext';
 
 const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
 
@@ -19,8 +19,8 @@ const brands = {
 };
 
 const ItemDetail = ({ product }) => {
-  const { userData, wishlist, addToWishlist, removeFromWishlist } = useContext(userContext);
-  const { addToCart, cart } = useContext(productsContext);
+  const { userData, wishlist, addToWishlist, removeFromWishlist } = useUserContext();
+  const { addToCart } = useProductsContext();
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState('');
   const [variation, setVariation] = useState(0);

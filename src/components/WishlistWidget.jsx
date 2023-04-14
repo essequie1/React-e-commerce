@@ -1,12 +1,12 @@
-import { useContext, useState } from 'react';
-import { userContext } from '../context/userContext';
+import { useState } from 'react';
+import { useUserContext } from '../context/userContext';
 import { Wishlist } from './Wishlist';
 import '../scss/WishlistWidget.scss';
 import { toast } from 'react-toastify';
 
 const WishlistWidget = () => {
   const [isWishlistShown, setIsWishlistShown] = useState(false);
-  const { userData } = useContext(userContext);
+  const { userData } = useUserContext();
 
   const handleShowWishlist = () => {
     if (Object.keys(userData).length > 0) {
