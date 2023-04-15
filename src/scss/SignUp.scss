@@ -71,15 +71,8 @@
     grid-area: small;
   }
   button {
-    justify-self: center;
+    @include rounded-button-fill($black, $white);
     grid-area: button;
-    background-color: $black;
-    font-weight: 600;
-    font-size: $md;
-    border-radius: 15px;
-    padding: 10px 20px;
-    cursor: pointer;
-    color: $white;
-    width: fit-content;
+    justify-self: center;
   }
 }

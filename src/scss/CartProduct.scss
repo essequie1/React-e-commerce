@@ -3,7 +3,8 @@
 .cart-product {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
+  width: 100%;
   img {
     height: 4rem;
     width: 4rem;
@@ -15,13 +16,17 @@
     font-weight: 600;
   }
   &__price {
+    flex: 1;
     font-weight: 600;
     border-right: 1px solid $grey;
     padding-right: 10px;
+    text-align: right;
   }
   &__button {
-    width: 1rem;
-    height: 1rem;
+    background-color: transparent;
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
     .product-icon {
       font-variation-settings: 'FILL' 0;
       font-size: 1.25rem;

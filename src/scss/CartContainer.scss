@@ -2,8 +2,12 @@
 
 .cart-container {
   display: grid;
-  grid-template-areas: 'title button' 'products products';
-  grid-template-rows: 3rem 1fr;
+  grid-template-areas:
+    'title button'
+    'products products'
+    'total total'
+    'bottom bottom';
+  grid-template-rows: 3rem 1fr 3rem 3rem;
   gap: 20px;
   position: absolute;
   z-index: 4000;
@@ -16,7 +20,7 @@
   left: 100%;
   transition: all 150ms;
   padding: 15px;
-  button {
+  &__closeBtn {
     grid-area: button;
     height: 2rem;
     width: 2rem;
@@ -43,6 +47,35 @@
   &__products {
     grid-area: products;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  &__total {
+    grid-area: total;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid $grey;
+    font-size: 1.25rem;
+    padding: 0 15px;
+    font-weight: 600;
+    line-height: 3rem;
+  }
+  &__bottom {
+    grid-area: bottom;
+    display: flex;
+    justify-content: space-between;
+    .checkout {
+      @include rounded-button-fill($black, $white);
+    }
+    .clear-cart {
+      @include rounded-button-fill(#e9190f, $white);
+      span {
+        line-height: 1rem;
+      }
+    }
   }
 }
 

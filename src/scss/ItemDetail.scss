@@ -174,29 +174,10 @@
   gap: 1rem;
   margin-top: 2rem;
   &__cart {
-    font-weight: 600;
-    font-size: 1rem;
-    line-height: 1rem;
-    width: fit-content;
-    height: 3.5rem;
-    border-radius: 15px;
-    padding: 20px 20px;
-    background-color: $black;
-    color: $white;
-    cursor: pointer;
+    @include rounded-button-fill($black, $white);
   }
   &__wishlist {
-    font-weight: 600;
-    font-size: 1rem;
-    line-height: 1rem;
-    width: fit-content;
-    height: 3.5rem;
-    border-radius: 15px;
-    padding: 15px 15px;
-    background-color: transparent;
-    border: 2px solid $black;
-    color: $black;
-    cursor: pointer;
+    @include rounded-button-border($black, $black);
     .wishlisted {
       font-variation-settings: 'FILL' 1;
     }

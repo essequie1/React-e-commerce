@@ -6,9 +6,39 @@ $grey: #f0f0f0;
 $accent: #b3efb2;
 $secondary: #b2c4ef;
 $blue: #145c9e;
+
 // FONTS
 
 $xl: 3rem;
 $lg: 2.25rem;
 $md: 1.5rem;
 $sm: 0.75rem;
+
+// MIXINS
+
+@mixin rounded-button-fill($background, $color) {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1rem;
+  width: fit-content;
+  height: 3.5rem;
+  border-radius: 15px;
+  padding: 20px 20px;
+  background-color: $background;
+  color: $color;
+  cursor: pointer;
+}
+
+@mixin rounded-button-border($border, $color) {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1rem;
+  width: fit-content;
+  height: 3.5rem;
+  border-radius: 15px;
+  padding: 15px 15px;
+  background-color: transparent;
+  border: 2px solid $border;
+  color: $color;
+  cursor: pointer;
+}

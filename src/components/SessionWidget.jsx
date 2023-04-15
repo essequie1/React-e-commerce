@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../context/userContext';
 import '../scss/SessionWidget.scss';
@@ -7,6 +7,17 @@ const SessionWidget = () => {
   const [isMenuShown, setIsMenuShown] = useState(false);
   const { userData } = useUserContext();
   const navigate = useNavigate();
+
+  // Effect for menu closing when clicking outside of it
+  useEffect(() => {
+    const closeMenu = e => {
+      if (e.composedPath()[0].className !== 'session__menu' && e.composedPath()[0].className !== 'session__icon material-symbols-outlined') {
+        setIsMenuShown(false);
+      }
+    };
+    document.body.addEventListener('click', closeMenu);
+    return () => document.body.removeEventListener('click', closeMenu);
+  }, []);
 
   return (
     <div className="session">
