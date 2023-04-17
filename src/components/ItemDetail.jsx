@@ -1,13 +1,13 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { addItemToWishlist, removeItemFromWishlist } from '../services/firestore';
+import { useUserContext } from '../context/userContext';
+import { useProductsContext } from '../context/productsContext';
 import bapeLogo from '../assets/brands/bape.png';
 import offwhiteLogo from '../assets/brands/off-white.png';
 import supremeLogo from '../assets/brands/supreme.png';
 import obeyLogo from '../assets/brands/obey.png';
-import { toast } from 'react-toastify';
-import { addItemToWishlist, removeItemFromWishlist } from '../services/firestore';
-import { useUserContext } from '../context/userContext';
 import '../scss/ItemDetail.scss';
-import { useProductsContext } from '../context/productsContext';
 
 const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
 
@@ -18,7 +18,7 @@ const brands = {
   obey: obeyLogo,
 };
 
-const ItemDetail = ({ product }) => {
+export const ItemDetail = ({ product }) => {
   const { userData, wishlist, addToWishlist, removeFromWishlist } = useUserContext();
   const { addToCart } = useProductsContext();
   const [quantity, setQuantity] = useState(1);
@@ -128,5 +128,3 @@ const ItemDetail = ({ product }) => {
     </div>
   );
 };
-
-export default ItemDetail;

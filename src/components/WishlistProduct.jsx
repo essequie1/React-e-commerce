@@ -4,7 +4,7 @@ import { useProductsContext } from '../context/productsContext';
 import { removeItemFromWishlist } from '../services/firestore';
 import '../scss/WishlistProduct.scss';
 
-const WishlistProduct = ({ product }) => {
+export const WishlistProduct = ({ product }) => {
   const { userData, removeFromWishlist } = useUserContext();
   const { addToCart } = useProductsContext();
 
@@ -37,4 +37,3 @@ const WishlistProduct = ({ product }) => {
     </div>
   );
 };
-export default WishlistProduct;

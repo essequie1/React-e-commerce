@@ -10,7 +10,7 @@ export const CartProduct = ({ product }) => {
       <p className="cart-product__title">{product.title}</p>
       <p className="cart-product__price">$ {product.price.toFixed(2)}</p>
       <button onClick={() => removeFromCart(product.id)} className="cart-product__button">
-        <span class="material-symbols-outlined product-icon">delete</span>
+        <span className="material-symbols-outlined product-icon">delete</span>
       </button>
     </div>
   );

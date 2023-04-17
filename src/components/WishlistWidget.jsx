@@ -1,12 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useUserContext } from '../context/userContext';
 import { Wishlist } from './Wishlist';
-import '../scss/WishlistWidget.scss';
 import { toast } from 'react-toastify';
+import '../scss/WishlistWidget.scss';
 
-const WishlistWidget = () => {
+export const WishlistWidget = () => {
   const [isWishlistShown, setIsWishlistShown] = useState(false);
   const { userData } = useUserContext();
+
+  // Effect for menu closing when clicking outside of it
+  useEffect(() => {
+    const closeMenu = e => {
+      const path = e.composedPath();
+      const isInside = path.filter(elm => elm.className === 'wishlist-widget');
+      if (isInside.length === 0) {
+        setIsWishlistShown(false);
+      }
+    };
+    document.body.addEventListener('click', closeMenu);
+    return () => document.body.removeEventListener('click', closeMenu);
+  }, []);
 
   const handleShowWishlist = () => {
     if (Object.keys(userData).length > 0) {

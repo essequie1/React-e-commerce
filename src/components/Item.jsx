@@ -12,7 +12,7 @@ const brands = {
   obey: obeyLogo,
 };
 
-const Item = ({ brand, gender, id, price, title, variations }) => {
+export const Item = ({ brand, gender, id, price, title, variations }) => {
   const variationsArr = Object.values(variations);
   return (
     <li className="item">
@@ -37,5 +37,3 @@ const Item = ({ brand, gender, id, price, title, variations }) => {
     </li>
   );
 };
-
-export default Item;

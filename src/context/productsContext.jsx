@@ -16,9 +16,6 @@ export const ProductsProvider = ({ children }) => {
     addData: data => {
       dispatch({ type: actions.ADD_DATA, data });
     },
-    getCartFromStorage: cart => {
-      dispatch({ type: actions.GET_CART_FROM_STORAGE, cart });
-    },
     addToCart: product => {
       dispatch({ type: actions.ADD_PRODUCT, product });
     },
@@ -27,6 +24,9 @@ export const ProductsProvider = ({ children }) => {
     },
     filterByCategory: category => {
       dispatch({ type: actions.FILTER_BY_CATEGORY, category });
+    },
+    changeProductSize: (id, size) => {
+      dispatch({ type: actions.CHANGE_PRODUCT_SIZE, id, size });
     },
   };
 

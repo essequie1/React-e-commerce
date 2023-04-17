@@ -1,11 +1,9 @@
 import { Link, NavLink } from 'react-router-dom';
-import CartWidget from './CartWidget';
-import WishlistWidget from './WishlistWidget';
-import SessionWidget from './SessionWidget';
+import { CartWidget, WishlistWidget, SessionWidget } from './componentsIndex';
 import logo from '../assets/logo-light.svg';
 import '../scss/Navbar.scss';
 
-const Navbar = () => {
+export const Navbar = () => {
   return (
     <header className="header">
       <Link to="/">
@@ -31,5 +29,3 @@ const Navbar = () => {
     </header>
   );
 };
-
-export default Navbar;

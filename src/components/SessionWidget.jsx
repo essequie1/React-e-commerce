@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../context/userContext';
 import '../scss/SessionWidget.scss';
 
-const SessionWidget = () => {
+export const SessionWidget = () => {
   const [isMenuShown, setIsMenuShown] = useState(false);
   const { userData } = useUserContext();
   const navigate = useNavigate();
@@ -55,4 +55,3 @@ const SessionWidget = () => {
     </div>
   );
 };
-export default SessionWidget;

@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useProductsContext } from '../context/productsContext';
-
+import { CartContainer } from './componentsIndex';
 import '../scss/CartWidget.scss';
-import { CartContainer } from './CartContainer';
 
-const CartWidget = () => {
+export const CartWidget = () => {
   const [isCartShown, setIsCartShown] = useState(false);
   const { cart } = useProductsContext();
 
@@ -35,5 +34,3 @@ const CartWidget = () => {
     </div>
   );
 };
-
-export default CartWidget;

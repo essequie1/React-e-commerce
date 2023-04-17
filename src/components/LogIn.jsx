@@ -6,7 +6,7 @@ import { useUserContext } from '../context/userContext';
 import { getUserData } from '../services/firestore';
 import '../scss/LogIn.scss';
 
-const LogIn = () => {
+export const LogIn = () => {
   const { addUserData } = useUserContext();
   const [formData, setFormData] = useState({
     email: '',
@@ -50,5 +50,3 @@ const LogIn = () => {
     </div>
   );
 };
-
-export default LogIn;

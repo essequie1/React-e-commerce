@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signUp } from '../services/auth';
 import { toast } from 'react-toastify';
 import '../scss/SignUp.scss';
 
-const SignUp = () => {
+export const SignUp = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',

@@ -1,7 +1,7 @@
-import Item from './Item';
+import { Item } from './componentsIndex';
 import '../scss/ItemList.scss';
 
-const ItemList = ({ products }) => {
+export const ItemList = ({ products }) => {
   return (
     <ul className="item-list">
       {products.map(product => (
@@ -18,5 +18,3 @@ const ItemList = ({ products }) => {
     </ul>
   );
 };
-
-export default ItemList;

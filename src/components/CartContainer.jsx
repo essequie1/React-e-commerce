@@ -1,5 +1,6 @@
-import { CartProduct } from './CartProduct';
+import { CartProduct } from './componentsIndex';
 import { useProductsContext } from '../context/productsContext';
+import { Link } from 'react-router-dom';
 import '../scss/CartContainer.scss';
 
 export const CartContainer = ({ isShown, handleShowCart }) => {
@@ -23,7 +24,9 @@ export const CartContainer = ({ isShown, handleShowCart }) => {
         </p>
       </div>
       <div className="cart-container__bottom">
-        <button className="checkout">Go to Checkout</button>
+        <Link className="checkout" to="/checkout">
+          Go to Checkout
+        </Link>
         <button className="clear-cart">
           <span className="material-symbols-outlined">backspace</span>
         </button>

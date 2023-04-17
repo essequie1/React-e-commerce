@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { logOut } from '../services/auth';
 import { useUserContext } from '../context/userContext';
-import Loading from './Loading';
+import { Loading } from './componentsIndex';
 import '../scss/UserProfile.scss';
 
-const UserProfile = () => {
+export const UserProfile = () => {
   const { userData, removeUserData } = useUserContext();
   const navigate = useNavigate();
 
@@ -39,4 +39,3 @@ const UserProfile = () => {
     </>
   );
 };
-export default UserProfile;
