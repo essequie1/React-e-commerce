@@ -31,7 +31,7 @@ export const ItemListContainer = () => {
 
   return (
     <>
-      {data?.length > 0 ? (
+      {data.length > 0 ? (
         <div className="item-list-container">
           <ItemList products={category === undefined ? data : selectedCategory} />
           {/* <button onClick={addDataToDb}>añadir</button> */}

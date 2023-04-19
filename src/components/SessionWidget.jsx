@@ -31,7 +31,7 @@ export const SessionWidget = () => {
 
   return (
     <div className="session-widget">
-      {Object.keys(userData)?.length === 0 ? (
+      {Object.keys(userData).length === 0 ? (
         <>
           <button className="session-widget__btn" onClick={() => setIsMenuShown(curr => !curr)}>
             <span className="session-widget-icon material-symbols-outlined">login</span>

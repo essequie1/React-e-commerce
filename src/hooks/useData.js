@@ -1,5 +1,9 @@
 const getLocalCartData = () => {
   let localCart = localStorage.getItem('sartorialCart');
+  if (localCart === null) {
+    localStorage.setItem('sartorialCart', JSON.stringify([]));
+    return [];
+  }
   return JSON.parse(localCart);
 };
 

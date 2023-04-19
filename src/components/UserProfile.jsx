@@ -16,7 +16,7 @@ export const UserProfile = () => {
 
   return (
     <>
-      {Object.keys(userData)?.length > 0 ? (
+      {Object.keys(userData).length > 0 ? (
         <div className="profile-container">
           <h1>Your Profile</h1>
           <div className="profile">

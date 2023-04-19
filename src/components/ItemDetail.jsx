@@ -26,7 +26,7 @@ export const ItemDetail = ({ product }) => {
   const [variation, setVariation] = useState(0);
 
   const variationsArr = Object.values(product?.variations);
-  const isItemInWishlist = wishlist.filter(productDB => productDB.id === product.id + variationsArr[variation].color)?.length > 0;
+  const isItemInWishlist = wishlist.filter(productDB => productDB.id === product.id + variationsArr[variation].color).length > 0;
 
   const handleWishlist = () => {
     const { variations, gender, description, ...newItem } = product;

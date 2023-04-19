@@ -29,7 +29,7 @@ export const CartWidget = () => {
       <div className="cart-widget">
         <button onClick={handleShowCart} className="cart-widget__btn">
           <span className="cart-widget-icon material-symbols-outlined">shopping_bag</span>
-          {cart?.length > 0 ? <span className="cart-widget__qty">{cart?.length}</span> : null}
+          {cart.length > 0 ? <span className="cart-widget__qty">{cart.length}</span> : null}
         </button>
       </div>
       <CartContainer isShown={isCartShown} handleShowCart={handleShowCart} />

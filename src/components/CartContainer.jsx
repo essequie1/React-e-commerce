@@ -12,7 +12,7 @@ export const CartContainer = ({ isShown, handleShowCart }) => {
   const navigation = useNavigate();
 
   const handleRedirect = () => {
-    if (Object.keys(userData)?.length > 0) {
+    if (Object.keys(userData).length > 0) {
       navigation('/checkout');
       handleShowCart();
     } else {
