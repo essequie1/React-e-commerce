@@ -18,7 +18,7 @@ export const Checkout = () => {
         </div>
       </div>
       <div className="checkout-side">
-        {Object.keys(userData).length === 0 ? (
+        {Object.keys(userData)?.length === 0 ? (
           <CheckoutWithoutAccount>
             <CheckoutInformation />
           </CheckoutWithoutAccount>

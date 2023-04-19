@@ -6,7 +6,7 @@ export const Wishlist = () => {
   const { wishlist } = useUserContext();
   return (
     <div className="wishlist">
-      {wishlist.length > 0 ? (
+      {wishlist?.length > 0 ? (
         <>
           {wishlist.map(product => (
             <WishlistProduct key={product.id} product={product} />
