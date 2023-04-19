@@ -13,6 +13,7 @@ export const actions = {
   ADD_DATA: 'ADD_DATA',
   ADD_PRODUCT: 'ADD_PRODUCT',
   REMOVE_PRODUCT: 'REMOVE_PRODUCT',
+  CLEAR_CART: 'CLEAR_CART',
   FILTER_BY_CATEGORY: 'FILTER_BY_CATEGORY',
   CHANGE_PRODUCT_SIZE: 'CHANGE_PRODUCT_SIZE',
   CHANGE_PRODUCT_QUANTITY: 'CHANGE_PRODUCT_QUANTITY',
@@ -32,6 +33,13 @@ export const reducer = (state, action) => {
       return {
         ...state,
         cart: [...state.cart, action.product],
+      };
+
+    // To remove all products from the cart.
+    case actions.CLEAR_CART:
+      return {
+        ...state,
+        cart: [],
       };
 
     // Remove a single product from the cart.

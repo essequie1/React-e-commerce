@@ -12,7 +12,7 @@ export const WishlistProduct = ({ product }) => {
     const notification = toast.loading('Removing...');
     removeItemFromWishlist(userData.uid, product)
       .then(() => removeFromWishlist(product.id))
-      .then(() => toast.update(notification, { render: 'Product removed from wishlist', type: 'success', autoClose: 3000, isLoading: false }));
+      .finally(() => toast.update(notification, { render: 'Product removed from wishlist', type: 'success', autoClose: 3000, isLoading: false }));
   };
 
   const handleAddToCart = () => {
@@ -23,10 +23,11 @@ export const WishlistProduct = ({ product }) => {
 
   return (
     <div className="wishlist-product">
-      <img src={product.image} alt="" />
-      <h6>{product.title}</h6>
-      <p>$ {product.price.toFixed(2)}</p>
-      <div className="wishlist-buttons">
+      <img className="wishlist-product__image" src={product.image} alt="" />
+      <div className="wishlist-product__color" style={{ backgroundColor: product.color }}></div>
+      <h6 className="wishlist-product__title">{product.title}</h6>
+      <p className="wishlist-product__price">$ {product.price.toFixed(2)}</p>
+      <div className="wishlist-product__buttons">
         <button onClick={handleRemove}>
           <span className="material-symbols-outlined">heart_minus</span>
         </button>

@@ -1,0 +1,35 @@
+@import './master';
+
+.checkout-confirmation {
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+  border-top: 1px solid $grey;
+  padding: 15px;
+  display: grid;
+  grid-template-areas: 'notice notice' 'signup login' 'proceed proceed';
+  gap: 15px;
+  &__notice {
+    grid-area: notice;
+    font-size: $md;
+  }
+  &__buttons {
+    display: flex;
+    gap: 15px;
+  }
+  &__signup {
+    @include rounded-button-fill($black, $white, 10px 15px);
+    grid-area: signup;
+  }
+  &__login {
+    @include rounded-button-border($black, $black, 10px 15px);
+    grid-area: login;
+    justify-self: left;
+  }
+  &__proceed {
+    grid-area: proceed;
+    color: black;
+  }
+}

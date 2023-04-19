@@ -18,3 +18,4 @@ export { UserProfile } from './UserProfile';
 export { Wishlist } from './Wishlist';
 export { WishlistProduct } from './WishlistProduct';
 export { WishlistWidget } from './WishlistWidget';
+export { CheckoutConfirmation } from './CheckoutConfirmation';

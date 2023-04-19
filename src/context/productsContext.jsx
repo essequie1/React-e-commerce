@@ -19,6 +19,9 @@ export const ProductsProvider = ({ children }) => {
     addToCart: product => {
       dispatch({ type: actions.ADD_PRODUCT, product });
     },
+    clearCart: () => {
+      dispatch({ type: actions.CLEAR_CART });
+    },
     removeFromCart: id => {
       dispatch({ type: actions.REMOVE_PRODUCT, id });
     },

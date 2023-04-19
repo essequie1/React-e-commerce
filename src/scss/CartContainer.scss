@@ -14,7 +14,6 @@
   width: 420px;
   height: 100svh;
   background-color: white;
-  border-left: 1px solid $grey;
   box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.5);
   top: 0;
   left: 100%;
@@ -67,8 +66,9 @@
     grid-area: bottom;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     .checkout {
-      @include rounded-button-fill($black, $white, 0px 20px);
+      @include rounded-button-fill($black, $white, 15px 15px);
     }
     .clear-cart {
       @include rounded-button-fill(#e9190f, $white, 15px 15px);
