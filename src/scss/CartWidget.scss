@@ -1,19 +1,22 @@
 @import './master';
 
-.cart {
+.cart-widget {
   position: relative;
-  background-color: transparent;
-  cursor: pointer;
-  transition: scale 100ms linear;
-  &:hover {
-    scale: 1.1;
+  &__btn {
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
   }
-  &__icon {
+  &-icon {
     color: $white;
+    transition: all 100ms;
+    &:hover {
+      color: $yellow;
+    }
   }
   &__qty {
     color: $black;
-    background-color: $accent;
+    background-color: $blue;
     border-radius: 20px;
     font-size: 0.6rem;
     position: absolute;

@@ -31,6 +31,6 @@
   }
   button {
     justify-self: center;
-    @include rounded-button-fill($black, $white);
+    @include rounded-button-fill($black, $white, 0 15px);
   }
 }

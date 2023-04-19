@@ -1,9 +1,9 @@
 @import './master';
 
 .item-list {
-  margin: 15px;
+  margin: 2rem;
   display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fill, 22em);
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, 20rem);
   justify-content: center;
 }

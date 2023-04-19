@@ -31,7 +31,9 @@ export const WishlistWidget = () => {
 
   return (
     <div className="wishlist-widget">
-      <button onClick={handleShowWishlist}>WISHLIST</button>
+      <button className="wishlist-widget__btn" onClick={handleShowWishlist}>
+        <span class="wishlist-widget-icon material-symbols-outlined">loyalty</span>
+      </button>
       {isWishlistShown ? <Wishlist /> : null}
     </div>
   );

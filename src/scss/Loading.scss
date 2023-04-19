@@ -7,11 +7,10 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(3px);
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
   z-index: 4000;
   &__img {
-    height: 70px;
-    width: 70px;
+    height: 4rem;
   }
 }

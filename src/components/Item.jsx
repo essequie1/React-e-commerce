@@ -12,27 +12,21 @@ const brands = {
   obey: obeyLogo,
 };
 
-export const Item = ({ brand, gender, id, price, title, variations }) => {
-  const variationsArr = Object.values(variations);
+export const Item = ({ product }) => {
+  const variationsArr = Object.values(product.variations);
   return (
-    <li className="item">
-      <Link className="item__link" to={`/item/${id}`}>
-        <div className="item-images">
-          <img src={variationsArr[0].images[0]} alt={title} />
+    <li className="product-container">
+      <Link className="product" to={`/item/${product.id}`}>
+        <img className="product__image" src={variationsArr[0].images[0]} alt={product.title} />
+        <p className="product__title">{product.title}</p>
+        <img className="product__brand" src={brands[product.brand]} alt={product.brand} />
+        <p className="product__category">{product.category.toUpperCase()} </p>
+        <div className="product__variations">
+          {variationsArr.map((variation, i) => (
+            <span className="color" key={variation.color} style={{ backgroundColor: variation.color }}></span>
+          ))}
         </div>
-        <div className="item-details">
-          <div className="item-information">
-            <p className="item-information__title">{title}</p>
-            <img className="item-information__brand" src={brands[brand]} alt={brand} />
-            <p className="item-information__target">{gender.toUpperCase()} </p>
-          </div>
-          <div className="item-variations">
-            {variationsArr.map((variation, i) => (
-              <span className="color" key={variation.color} style={{ backgroundColor: variation.color }}></span>
-            ))}
-          </div>
-          <p className="item-details__price">$ {price.toFixed(2)}</p>
-        </div>
+        <p className="product__price">$ {product.price.toFixed(2)}</p>
       </Link>
     </li>
   );

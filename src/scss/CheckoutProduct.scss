@@ -1,0 +1,60 @@
+@import './master';
+
+.checkout-product {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-around;
+  height: 7rem;
+  padding: 0 20px;
+  &__image {
+    width: 6rem;
+    height: 6rem;
+    object-fit: contain;
+    border: 1px solid $grey;
+  }
+  &__title {
+    width: 10rem;
+  }
+  &__select {
+    border-radius: 5px;
+    background-color: transparent;
+    padding: 5px;
+    border: 1px solid $black;
+    width: 4rem;
+    cursor: pointer;
+  }
+  &__option {
+    background-color: $white;
+    padding: 5px;
+    border: 1px solid $black;
+    cursor: pointer;
+    &:hover {
+      background-color: red;
+    }
+  }
+  &__input {
+    border-radius: 5px;
+    width: 4rem;
+    padding: 5px;
+    border: 1px solid $black;
+  }
+  &__price {
+    font-weight: 600;
+    width: 5rem;
+  }
+  &__remove {
+    background: transparent;
+    cursor: pointer;
+    width: 1rem;
+    .remove-icon {
+      font-size: 1rem;
+      color: $black;
+      transition: color 150ms;
+      vertical-align: middle;
+      &:hover {
+        color: $red;
+      }
+    }
+  }
+}

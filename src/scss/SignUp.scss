@@ -71,7 +71,7 @@
     grid-area: small;
   }
   button {
-    @include rounded-button-fill($black, $white);
+    @include rounded-button-fill($black, $white, 0 15px);
     grid-area: button;
     justify-self: center;
   }

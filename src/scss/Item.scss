@@ -1,56 +1,43 @@
 @import './master';
 
-.item {
-  padding: 15px 20px;
+.product-container {
   display: flex;
   flex-direction: column;
   list-style-type: none;
   transition: transform 50ms, outline 50ms;
   outline: 1px solid transparent;
+  outline-offset: 0.5rem;
   &:hover {
     transform: scale(1.025);
     outline: 1px solid rgb(0, 0, 0, 0.1);
   }
-  &__link {
-    text-decoration: none;
-  }
 }
 
-.item-images {
-  img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
-  }
-}
-
-.item-details {
+.product {
+  width: 20rem;
+  padding-bottom: 1.5rem;
+  text-decoration: none;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: 10px 0;
+  grid-template-areas:
+    'image image'
+    'image image'
+    'title target'
+    'variations variations';
   color: $black;
   position: relative;
-  display: flex;
-  padding: 5px;
-  gap: 5px;
-  flex-direction: column;
-  &__price {
-    position: absolute;
-    width: 4rem;
-    text-align: center;
-    bottom: calc(100% + 20px);
-    right: 0;
-    background-color: $secondary;
-    font-size: $sm;
-    font-weight: 600;
-    line-height: $sm * 2;
+  &__image {
+    grid-area: image;
+    height: 20rem;
+    object-fit: contain;
+    aspect-ratio: 1 / 1;
   }
-}
-
-.item-information {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   &__title {
+    grid-area: title;
     font-weight: 900;
-    font-size: 1.2rem;
+    font-size: $md;
     letter-spacing: -1px;
     text-align: left;
     width: 100%;
@@ -60,25 +47,37 @@
   }
   &__brand {
     position: absolute;
-    bottom: calc(100% + 20px);
+    top: 16rem;
+    height: 3rem;
+    max-width: 6rem;
+    object-fit: contain;
+    object-position: bottom;
+  }
+  &__category {
+    grid-area: target;
+    text-align: right;
+    font-size: $sm;
+  }
+  &__variations {
+    grid-area: variations;
+    display: flex;
+    gap: 5px;
+    .color {
+      width: 25px;
+      height: 25px;
+      border-radius: 100%;
+    }
+  }
+  &__price {
+    position: absolute;
+    top: calc(17rem);
     height: 2rem;
-  }
-  &__gender {
+    padding: 0 10px;
+    right: 0;
+    font-size: $sm;
+    line-height: 2rem;
     font-weight: 600;
-    text-align: center;
-    color: gray;
-  }
-  &__target {
-    text-align: center;
-  }
-}
-
-.item-variations {
-  display: flex;
-  gap: 5px;
-  .color {
-    width: 25px;
-    height: 25px;
-    border-radius: 100%;
+    background-color: $black;
+    color: $white;
   }
 }

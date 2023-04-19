@@ -8,7 +8,8 @@ export const CartProduct = ({ product }) => {
     <div className="cart-product">
       <img src={product.image} alt="" />
       <p className="cart-product__title">{product.title}</p>
-      <p className="cart-product__price">$ {product.price.toFixed(2)}</p>
+      <p className="cart-product__quantity">x{product.selectedQuantity}</p>
+      <p className="cart-product__price">$ {(product.price * product.selectedQuantity).toFixed(2)}</p>
       <button onClick={() => removeFromCart(product.id)} className="cart-product__button">
         <span className="material-symbols-outlined product-icon">delete</span>
       </button>

@@ -1,17 +1,17 @@
 @import './master';
 
-header {
+.header {
   width: 100svw;
   height: 7rem;
   background-color: $black;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 0 2rem;
   position: sticky;
   top: 0;
   z-index: 500;
-  img {
+  &__logo {
     height: 2rem;
     width: auto;
   }
@@ -20,26 +20,19 @@ header {
 .nav {
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
   &__link {
-    font-size: 1rem;
+    font-size: $sm;
     text-decoration: none;
     color: $white;
-    font-weight: 600;
-    transition: color 200ms;
-    &--active {
-      font-weight: 600;
-      text-decoration: none;
-      color: $accent;
-    }
-    &:hover {
-      color: $accent;
-    }
-    span {
-      font-size: 0.6rem;
-      color: red;
-      vertical-align: top;
+    font-weight: 400;
+    transition: all 150ms;
+    &--selected {
+      cursor: default;
       font-weight: 900;
+      text-decoration: none;
+      color: $yellow;
+      transition: all 150ms;
     }
   }
 }

@@ -12,7 +12,7 @@ export const CartWidget = () => {
     const closeMenu = e => {
       const path = e.composedPath();
       const isInside = path.filter(elm => elm.className === 'cart-container --active');
-      if (isInside.length === 0 && path[0].className !== 'material-symbols-outlined cart__icon') {
+      if (isInside.length === 0 && path[0].className !== 'cart-widget-icon material-symbols-outlined') {
         setIsCartShown(false);
       }
     };
@@ -25,12 +25,14 @@ export const CartWidget = () => {
   };
 
   return (
-    <div>
-      <button onClick={() => setIsCartShown(curr => !curr)} className="cart">
-        <span className="material-symbols-outlined cart__icon">shopping_bag</span>
-        {cart.length > 0 ? <span className="cart__qty">{cart.length}</span> : null}
-      </button>
+    <>
+      <div className="cart-widget">
+        <button onClick={handleShowCart} className="cart-widget__btn">
+          <span className="cart-widget-icon material-symbols-outlined">shopping_bag</span>
+          {cart.length > 0 ? <span className="cart-widget__qty">{cart.length}</span> : null}
+        </button>
+      </div>
       <CartContainer isShown={isCartShown} handleShowCart={handleShowCart} />
-    </div>
+    </>
   );
 };

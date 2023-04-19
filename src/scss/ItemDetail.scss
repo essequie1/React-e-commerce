@@ -174,10 +174,10 @@
   gap: 1rem;
   margin-top: 2rem;
   &__cart {
-    @include rounded-button-fill($black, $white);
+    @include rounded-button-fill($black, $white, 0 15px);
   }
   &__wishlist {
-    @include rounded-button-border($black, $black);
+    @include rounded-button-border($black, $black, 0 15px);
     .wishlisted {
       font-variation-settings: 'FILL' 1;
     }

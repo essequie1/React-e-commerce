@@ -2,14 +2,16 @@
 
 .wishlist-widget {
   position: relative;
-  button {
+  &__btn {
+    position: relative;
     background-color: transparent;
-    color: $white;
-    font-size: 1rem;
-    font-weight: 600;
     cursor: pointer;
+  }
+  &-icon {
+    color: $white;
+    transition: all 100ms;
     &:hover {
-      color: $accent;
+      color: $yellow;
     }
   }
 }

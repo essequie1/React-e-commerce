@@ -20,11 +20,11 @@ export const CartContainer = ({ isShown, handleShowCart }) => {
         <p>Total</p>
         <p>
           {'$ '}
-          {cart.reduce((acc, prod) => acc + prod.price, 0)}
+          {cart.reduce((acc, prod) => acc + prod.price * prod.selectedQuantity, 0)}
         </p>
       </div>
       <div className="cart-container__bottom">
-        <Link className="checkout" to="/checkout">
+        <Link onClick={handleShowCart} className="checkout" to="/checkout">
           Go to Checkout
         </Link>
         <button className="clear-cart">

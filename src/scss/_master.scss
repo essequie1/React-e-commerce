@@ -1,42 +1,40 @@
 // COLORS
 
 $black: #090909;
-$white: #e8f1f2;
+$white: #fffffb;
 $grey: #f0f0f0;
-$accent: #b3efb2;
-$secondary: #b2c4ef;
-$blue: #145c9e;
+$accent: #95bf8f;
+$secondary: #280004;
+$blue: #00a6ed;
+$red: #e9190f;
+$yellow: #ffc145;
 
 // FONTS
-
-$xl: 3rem;
-$lg: 2.25rem;
-$md: 1.5rem;
-$sm: 0.75rem;
+$xxl: 2.5rem;
+$xl: 2.2rem;
+$lg: 1.85rem;
+$md: 1.125rem;
+$sm: 0.875rem;
 
 // MIXINS
 
-@mixin rounded-button-fill($background, $color) {
+@mixin rounded-button-fill($background, $color, $padding) {
   font-weight: 600;
   font-size: 1rem;
-  line-height: 1rem;
   width: fit-content;
-  height: 3.5rem;
   border-radius: 15px;
-  padding: 20px 20px;
+  padding: $padding;
   background-color: $background;
   color: $color;
   cursor: pointer;
 }
 
-@mixin rounded-button-border($border, $color) {
+@mixin rounded-button-border($border, $color, $padding) {
   font-weight: 600;
   font-size: 1rem;
-  line-height: 1rem;
   width: fit-content;
-  height: 3.5rem;
   border-radius: 15px;
-  padding: 15px 15px;
+  padding: $padding;
   background-color: transparent;
   border: 2px solid $border;
   color: $color;

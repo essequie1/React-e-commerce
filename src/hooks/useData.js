@@ -15,6 +15,7 @@ export const actions = {
   REMOVE_PRODUCT: 'REMOVE_PRODUCT',
   FILTER_BY_CATEGORY: 'FILTER_BY_CATEGORY',
   CHANGE_PRODUCT_SIZE: 'CHANGE_PRODUCT_SIZE',
+  CHANGE_PRODUCT_QUANTITY: 'CHANGE_PRODUCT_QUANTITY',
 };
 
 export const reducer = (state, action) => {
@@ -51,13 +52,24 @@ export const reducer = (state, action) => {
 
     // Change a single product selected "size" property.
     case actions.CHANGE_PRODUCT_SIZE:
-      const newCart = [...state.cart];
-      const index = state.cart.findIndex(prod => prod.id === action.id);
-      const itemToChange = newCart[index];
-      itemToChange.selectedSize = action.size;
+      const newCartForSize = [...state.cart];
+      const indexSize = state.cart.findIndex(prod => prod.id === action.id);
+      const itemToChangeSize = newCartForSize[indexSize];
+      itemToChangeSize.selectedSize = action.size;
       return {
         ...state,
-        cart: newCart,
+        cart: newCartForSize,
+      };
+
+    // Change a single product selected "quantity" property.
+    case actions.CHANGE_PRODUCT_QUANTITY:
+      const newCartForQuantity = [...state.cart];
+      const indexQuantity = state.cart.findIndex(prod => prod.id === action.id);
+      const itemToChangeQuantity = newCartForQuantity[indexQuantity];
+      itemToChangeQuantity.selectedQuantity = action.quantity;
+      return {
+        ...state,
+        cart: newCartForQuantity,
       };
 
     default:

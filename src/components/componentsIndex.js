@@ -2,6 +2,8 @@ export { CartContainer } from './CartContainer';
 export { CartProduct } from './CartProduct';
 export { CartWidget } from './CartWidget';
 export { Checkout } from './Checkout';
+export { CheckoutProduct } from './CheckoutProduct';
+export { CheckoutSidebar } from './CheckoutSidebar';
 export { Item } from './Item';
 export { ItemDetail } from './ItemDetail';
 export { ItemDetailContainer } from './ItemDetailContainer';

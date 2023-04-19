@@ -5,7 +5,7 @@ import { ItemList, Loading } from './componentsIndex';
 import '../scss/ItemListContainer.scss';
 
 export const ItemListContainer = () => {
-  const { data, cart, selectedCategory, filterByCategory } = useProductsContext();
+  const { data, selectedCategory, filterByCategory } = useProductsContext();
   const { category } = useParams();
 
   useEffect(() => {

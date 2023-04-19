@@ -1,29 +1,19 @@
+import { CheckoutProduct, CheckoutSidebar } from './componentsIndex';
 import { useProductsContext } from '../context/productsContext';
 import '../scss/Checkout.scss';
 
-const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
-const quantities = [1, 2, 3, 4, 5];
-
 export const Checkout = () => {
-  const { cart, changeProductSize } = useProductsContext();
+  const { cart } = useProductsContext();
   return (
-    <div>
-      {cart.map(prod => (
-        <div className="checkout-product" key={prod.id}>
-          <h4>{prod.title}</h4>
-          <select defaultValue={prod.selectedSize} onChange={e => changeProductSize(prod.id, e.target.value)}>
-            {prod.selectedSize == '' ? <option value="" disabled hidden selected></option> : prod.selectedSize}
-            {sizes.map(size => (
-              <option key={size} value={size}>
-                {size}
-              </option>
-            ))}
-          </select>
+    <div className="checkout-container">
+      <div className="checkout">
+        <div className="checkout__products">
+          {cart.map(prod => (
+            <CheckoutProduct key={prod.id} prod={prod} />
+          ))}
         </div>
-      ))}
-      <button onClick={() => console.log(cart)}>cart</button>
+      </div>
+      <CheckoutSidebar />
     </div>
   );
 };
-
-// selected={size === prod.selectedSize ? 'selected' : ''}

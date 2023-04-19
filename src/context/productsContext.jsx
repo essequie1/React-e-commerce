@@ -28,6 +28,9 @@ export const ProductsProvider = ({ children }) => {
     changeProductSize: (id, size) => {
       dispatch({ type: actions.CHANGE_PRODUCT_SIZE, id, size });
     },
+    changeProductQuantity: (id, quantity) => {
+      dispatch({ type: actions.CHANGE_PRODUCT_QUANTITY, id, quantity });
+    },
   };
 
   useEffect(() => {

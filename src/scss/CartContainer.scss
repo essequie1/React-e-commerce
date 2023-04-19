@@ -7,11 +7,11 @@
     'products products'
     'total total'
     'bottom bottom';
-  grid-template-rows: 3rem 1fr 3rem 3rem;
+  grid-template-rows: 3rem 1fr 3rem 4rem;
   gap: 20px;
   position: absolute;
   z-index: 4000;
-  width: 400px;
+  width: 420px;
   height: 100svh;
   background-color: white;
   border-left: 1px solid $grey;
@@ -68,12 +68,13 @@
     display: flex;
     justify-content: space-between;
     .checkout {
-      @include rounded-button-fill($black, $white);
+      @include rounded-button-fill($black, $white, 0px 20px);
     }
     .clear-cart {
-      @include rounded-button-fill(#e9190f, $white);
+      @include rounded-button-fill(#e9190f, $white, 15px 15px);
       span {
         line-height: 1rem;
+        vertical-align: middle;
       }
     }
   }
@@ -94,13 +95,13 @@
     transform: translateX(0px);
   }
   100% {
-    transform: translateX(-400px);
+    transform: translateX(-420px);
   }
 }
 
 @keyframes hideMenu {
   0% {
-    transform: translateX(-400px);
+    transform: translateX(-420px);
   }
   50% {
     transform: translateX(0px);
