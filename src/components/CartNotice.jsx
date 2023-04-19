@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import '../scss/CheckoutConfirmation.scss';
 
-export const CheckoutConfirmation = ({ removeNotice, closeMenu }) => {
+export const CartNotice = ({ removeNotice, closeMenu }) => {
   const navigation = useNavigate();
   const handleButtons = route => {
     closeMenu();

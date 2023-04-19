@@ -10,7 +10,7 @@
   padding: 20px;
 }
 
-.checkout {
+.checkout-main {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -29,78 +29,9 @@
 .checkout-side {
   border: 1px solid $grey;
   border-radius: 5px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 15px;
-  &__total {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    & span {
-      background-color: rgb(250, 250, 250);
-      padding: 15px 5px;
-      border-top: 1px solid $grey;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      font-weight: 400;
-      font-size: 0.8rem;
-      & p {
-        font-weight: 600;
-        font-size: 1rem;
-      }
-      &:nth-last-of-type(1) {
-        font-size: 1.25rem;
-        border-bottom: 1px solid $grey;
-        & p {
-          font-size: 1.5rem;
-        }
-      }
-    }
-  }
-  &__user {
-    font-size: 0.8rem;
-    padding: 10px;
-  }
-  &__form {
-    display: flex;
-    flex-direction: column;
-    padding: 0 10px;
-    label {
-      display: flex;
-      flex-direction: column;
-      input {
-        border: 1px solid $grey;
-        padding: 5px 10px;
-        border-radius: 15px;
-      }
-    }
-  }
-  &__coupon {
-    padding: 0 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    label {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      input {
-        border: 1px solid $grey;
-        border-radius: 15px;
-        padding: 10px 10px;
-      }
-    }
-    button {
-      @include rounded-button-border($black, $black, 8px 15px);
-    }
-  }
-  &__payment {
-    @include rounded-button-fill($black, $white, 15px);
-    align-self: center;
-  }
 }

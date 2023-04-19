@@ -1,8 +1,8 @@
 import { useProductsContext } from '../context/productsContext';
 import { useUserContext } from '../context/userContext';
 import { useState } from 'react';
-import { CartProduct, CheckoutConfirmation } from './componentsIndex';
-import { Link, useNavigate } from 'react-router-dom';
+import { CartNotice, CartProduct } from './componentsIndex';
+import { useNavigate } from 'react-router-dom';
 import '../scss/CartContainer.scss';
 
 export const CartContainer = ({ isShown, handleShowCart }) => {
@@ -14,6 +14,7 @@ export const CartContainer = ({ isShown, handleShowCart }) => {
   const handleRedirect = () => {
     if (Object.keys(userData).length > 0) {
       navigation('/checkout');
+      handleShowCart();
     } else {
       setConfirmation(true);
     }
@@ -51,7 +52,7 @@ export const CartContainer = ({ isShown, handleShowCart }) => {
       ) : (
         <h4>Your cart is empty...</h4>
       )}
-      {confirmation ? <CheckoutConfirmation closeMenu={handleShowCart} removeNotice={() => setConfirmation(false)} /> : null}
+      {confirmation ? <CartNotice closeMenu={handleShowCart} removeNotice={() => setConfirmation(false)} /> : null}
     </div>
   );
 };

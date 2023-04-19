@@ -6,7 +6,9 @@ import '../scss/WishlistProduct.scss';
 
 export const WishlistProduct = ({ product }) => {
   const { userData, removeFromWishlist } = useUserContext();
-  const { addToCart } = useProductsContext();
+  const { addToCart, cart } = useProductsContext();
+
+  const isInsideCart = cart.find(obj => obj.id === product.id);
 
   const handleRemove = () => {
     const notification = toast.loading('Removing...');
@@ -17,8 +19,12 @@ export const WishlistProduct = ({ product }) => {
 
   const handleAddToCart = () => {
     const itemToAdd = { ...product, selectedSize: '' };
-    addToCart(itemToAdd);
-    toast.success('Product added to bag');
+    if (isInsideCart) {
+      toast.error('This product is already inside your bag');
+    } else {
+      addToCart(itemToAdd);
+      toast.success('Product added to bag');
+    }
   };
 
   return (
