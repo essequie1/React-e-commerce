@@ -5,7 +5,7 @@ import { Loading } from './componentsIndex';
 import '../scss/UserProfile.scss';
 
 export const UserProfile = () => {
-  const { userData, removeUserData } = useUserContext();
+  const { userData, removeUserData, isLoggedIn } = useUserContext();
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
@@ -16,7 +16,7 @@ export const UserProfile = () => {
 
   return (
     <>
-      {Object.keys(userData).length > 0 ? (
+      {isLoggedIn ? (
         <div className="profile-container">
           <h1>Your Profile</h1>
           <div className="profile">

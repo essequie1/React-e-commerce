@@ -7,12 +7,12 @@ import '../scss/CartContainer.scss';
 
 export const CartContainer = ({ isShown, handleShowCart }) => {
   const [confirmation, setConfirmation] = useState(false);
-  const { cart, clearCart } = useProductsContext();
-  const { userData } = useUserContext();
+  const { cart, clearCart, cartTotal } = useProductsContext();
+  const { isLoggedIn } = useUserContext();
   const navigation = useNavigate();
 
   const handleRedirect = () => {
-    if (Object.keys(userData).length > 0) {
+    if (isLoggedIn) {
       navigation('/checkout');
       handleShowCart();
     } else {
@@ -35,10 +35,7 @@ export const CartContainer = ({ isShown, handleShowCart }) => {
           </div>
           <div className="cart-container__total">
             <p>Total</p>
-            <p>
-              {'$ '}
-              {cart.reduce((acc, prod) => acc + prod.price * prod.selectedQuantity, 0)}
-            </p>
+            <p>{'$ ' + cartTotal}</p>
           </div>
           <div className="cart-container__bottom">
             <button onClick={handleRedirect} className="checkout">
@@ -50,7 +47,7 @@ export const CartContainer = ({ isShown, handleShowCart }) => {
           </div>
         </>
       ) : (
-        <h4>Your cart is empty...</h4>
+        <p>Your cart is empty...</p>
       )}
       {confirmation ? <CartNotice closeMenu={handleShowCart} removeNotice={() => setConfirmation(false)} /> : null}
     </div>

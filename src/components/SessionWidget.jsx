@@ -5,7 +5,7 @@ import '../scss/SessionWidget.scss';
 
 export const SessionWidget = () => {
   const [isMenuShown, setIsMenuShown] = useState(false);
-  const { userData } = useUserContext();
+  const { isLoggedIn } = useUserContext();
   const navigate = useNavigate();
 
   // Effect for menu closing when clicking outside of it
@@ -31,7 +31,11 @@ export const SessionWidget = () => {
 
   return (
     <div className="session-widget">
-      {Object.keys(userData).length === 0 ? (
+      {isLoggedIn ? (
+        <button className="session-widget__btn" onClick={() => navigate('/profile')}>
+          <span className="session-widget-icon material-symbols-outlined">account_circle</span>
+        </button>
+      ) : (
         <>
           <button className="session-widget__btn" onClick={() => setIsMenuShown(curr => !curr)}>
             <span className="session-widget-icon material-symbols-outlined">login</span>
@@ -43,10 +47,6 @@ export const SessionWidget = () => {
             </div>
           ) : null}
         </>
-      ) : (
-        <button className="session-widget__btn" onClick={() => navigate('/profile')}>
-          <span className="session-widget-icon material-symbols-outlined">account_circle</span>
-        </button>
       )}
     </div>
   );

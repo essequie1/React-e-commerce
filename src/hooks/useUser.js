@@ -1,6 +1,7 @@
 export const initialState = {
   userData: {},
   wishlist: [],
+  isLoggedIn: false,
 };
 
 export const actions = {
@@ -17,11 +18,13 @@ export const reducer = (state, action) => {
       return {
         userData: userData,
         wishlist: wishlist,
+        isLoggedIn: true,
       };
     case actions.REMOVE_USER_DATA:
       return {
         userData: {},
         wishlist: [],
+        isLoggedIn: false,
       };
     case actions.ADD_TO_WISHLIST:
       return {

@@ -6,7 +6,7 @@ import '../scss/WishlistWidget.scss';
 
 export const WishlistWidget = () => {
   const [isWishlistShown, setIsWishlistShown] = useState(false);
-  const { userData } = useUserContext();
+  const { isLoggedIn } = useUserContext();
 
   // Effect for menu closing when clicking outside of it
   useEffect(() => {
@@ -22,7 +22,7 @@ export const WishlistWidget = () => {
   }, []);
 
   const handleShowWishlist = () => {
-    if (Object.keys(userData).length > 0) {
+    if (isLoggedIn) {
       setIsWishlistShown(curr => !curr);
     } else {
       toast.warning('You have to log in to have a wishlist');

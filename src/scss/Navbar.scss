@@ -30,6 +30,7 @@
     &--selected {
       cursor: default;
       font-weight: 900;
+      font-size: $sm;
       text-decoration: none;
       color: $yellow;
       transition: all 150ms;

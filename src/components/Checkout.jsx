@@ -1,13 +1,11 @@
-import { CheckoutInformation, CheckoutProduct } from './componentsIndex';
+import { CheckoutInformation, CheckoutProduct, CheckoutWithAccount, CheckoutWithoutAccount } from './componentsIndex';
 import { useProductsContext } from '../context/productsContext';
-import '../scss/Checkout.scss';
 import { useUserContext } from '../context/userContext';
-import { CheckoutWithoutAccount } from './CheckoutWithoutAccount';
-import { CheckoutWithAccount } from './CheckoutWithAccount';
+import '../scss/Checkout.scss';
 
 export const Checkout = () => {
   const { cart } = useProductsContext();
-  const { userData } = useUserContext();
+  const { isLoggedIn } = useUserContext();
   return (
     <div className="checkout-container">
       <div className="checkout-main">
@@ -18,14 +16,14 @@ export const Checkout = () => {
         </div>
       </div>
       <div className="checkout-side">
-        {Object.keys(userData).length === 0 ? (
-          <CheckoutWithoutAccount>
-            <CheckoutInformation />
-          </CheckoutWithoutAccount>
-        ) : (
+        {isLoggedIn ? (
           <CheckoutWithAccount>
             <CheckoutInformation />
           </CheckoutWithAccount>
+        ) : (
+          <CheckoutWithoutAccount>
+            <CheckoutInformation />
+          </CheckoutWithoutAccount>
         )}
       </div>
     </div>

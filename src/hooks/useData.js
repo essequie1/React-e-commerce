@@ -1,5 +1,6 @@
+// Set the localStorage cart for the initialState.
 const getLocalCartData = () => {
-  let localCart = localStorage.getItem('sartorialCart');
+  const localCart = localStorage.getItem('sartorialCart');
   if (localCart === null) {
     localStorage.setItem('sartorialCart', JSON.stringify([]));
     return [];
@@ -7,10 +8,29 @@ const getLocalCartData = () => {
   return JSON.parse(localCart);
 };
 
+// Set the localStorage cart total amount for the initialState.
+const getLocalCartPrice = () => {
+  const localCart = localStorage.getItem('sartorialCart');
+  if (localCart === null || localCart == []) {
+    return 0;
+  } else {
+    const cart = JSON.parse(localCart);
+    return calculateCartTotal(cart);
+  }
+};
+
+// Reducer for calculating the cart total amount.
+const calculateCartTotal = cart => {
+  const cartPrices = cart.reduce((acc, prod) => acc + prod.price * prod.selectedQuantity, 0);
+  return cartPrices.toFixed(2);
+};
+
 export const initialState = {
   data: [],
   cart: getLocalCartData(),
   selectedCategory: [],
+  sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+  cartTotal: getLocalCartPrice(),
 };
 
 export const actions = {
@@ -25,8 +45,18 @@ export const actions = {
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    // Get data from Firebase and populate the cart from the context.
+    // Get data from Firebase and populate the data array for the context.
+    // Also turn the "variations" object into an array for simplicity.
     case actions.ADD_DATA:
+      for (let i = 0; i < action.data.length; i++) {
+        const variationsArr = [];
+        const variationsObj = Object.entries(action.data[i].variations);
+        variationsObj.map(prod => {
+          variationsArr.push(prod[1]);
+        });
+        action.data[i].variations = variationsArr;
+      }
+
       return {
         ...state,
         data: action.data,
@@ -37,6 +67,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         cart: [...state.cart, action.product],
+        cartTotal: calculateCartTotal([...state.cart, action.product]),
       };
 
     // To remove all products from the cart.
@@ -44,6 +75,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         cart: [],
+        cartTotal: 0,
       };
 
     // Remove a single product from the cart.
@@ -52,6 +84,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         cart: filteredCart,
+        cartTotal: calculateCartTotal(filteredCart),
       };
 
     // Filter the data from the context by a specified category.
@@ -82,6 +115,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         cart: newCartForQuantity,
+        cartTotal: calculateCartTotal(newCartForQuantity),
       };
 
     default:

@@ -20,7 +20,7 @@
       top: 30px;
     }
     img {
-      border: 2px solid $grey;
+      border: 1px solid $grey;
       width: 50%;
       aspect-ratio: 1 / 1;
       object-fit: cover;
@@ -40,7 +40,7 @@
     width: 40svw;
     display: flex;
     flex-direction: column;
-    border: 2px solid $grey;
+    border: 1px solid $grey;
     position: relative;
     padding: 40px;
   }

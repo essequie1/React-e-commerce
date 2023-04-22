@@ -1,16 +1,15 @@
 import { useProductsContext } from '../context/productsContext';
 import '../scss/CheckoutProduct.scss';
 
-const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
-
 export const CheckoutProduct = ({ prod }) => {
-  const { changeProductSize, changeProductQuantity, removeFromCart } = useProductsContext();
+  const { changeProductSize, changeProductQuantity, removeFromCart, sizes } = useProductsContext();
 
   const handleQuantityChange = (e, prodId) => {
     if (e.target.validity.valid) {
       changeProductQuantity(prodId, parseInt(e.target.value));
     }
   };
+
   return (
     <div className="checkout-product" key={prod.id}>
       <img className="checkout-product__image" src={prod.image} alt="" />
@@ -28,11 +27,10 @@ export const CheckoutProduct = ({ prod }) => {
         value={prod.selectedQuantity}
         onChange={e => handleQuantityChange(e, prod.id)}
         type="number"
-        inputMode="numeric"
         required
         pattern="([0-9])+"
         min={1}
-        max={10}
+        max={5}
       />
       <p className="checkout-product__price">$ {(prod.price * prod.selectedQuantity).toFixed(2)}</p>
       <button className="checkout-product__remove" onClick={() => removeFromCart(prod.id)}>

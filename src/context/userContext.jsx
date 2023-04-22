@@ -8,12 +8,10 @@ export const useUserContext = () => useContext(userContext);
 export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  //   userData: [],
-  //   wishlist: [],
-
   const value = {
     userData: state.userData,
     wishlist: state.wishlist,
+    isLoggedIn: state.isLoggedIn,
     addUserData: data => {
       dispatch({ type: actions.ADD_USER_DATA, data });
     },

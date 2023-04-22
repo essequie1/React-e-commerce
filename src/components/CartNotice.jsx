@@ -3,10 +3,16 @@ import '../scss/CheckoutConfirmation.scss';
 
 export const CartNotice = ({ removeNotice, closeMenu }) => {
   const navigation = useNavigate();
+
   const handleButtons = route => {
     closeMenu();
     removeNotice();
     navigation(route);
+  };
+
+  const handleCheckout = () => {
+    closeMenu();
+    removeNotice();
   };
 
   return (
@@ -20,14 +26,7 @@ export const CartNotice = ({ removeNotice, closeMenu }) => {
           Log In
         </button>
       </div>
-      <Link
-        onClick={() => {
-          closeMenu();
-          removeNotice();
-        }}
-        className="checkout-confirmation__proceed"
-        to={'/checkout'}
-      >
+      <Link onClick={() => handleCheckout()} className="checkout-confirmation__proceed" to={'/checkout'}>
         Proceed to checkout anyways...
       </Link>
     </div>
