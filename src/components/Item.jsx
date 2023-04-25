@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
+import { memo } from 'react';
 import { brands } from '../assets/imagesIndex';
 import '../scss/Item.scss';
 
-export const Item = ({ product }) => {
+export const Item = memo(({ product }) => {
   return (
     <li className="product-container">
       <Link className="product" to={`/item/${product.id}`}>
@@ -19,4 +20,4 @@ export const Item = ({ product }) => {
       </Link>
     </li>
   );
-};
+});

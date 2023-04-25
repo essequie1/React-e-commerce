@@ -6,7 +6,18 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { useUserContext } from './context/userContext';
 import { useProductsContext } from './context/productsContext';
 import { getProducts, getUserData } from './services/firestore';
-import { Navbar, ItemListContainer, ItemDetailContainer, LogIn, SignUp, UserProfile, Checkout, NotFound } from './components/componentsIndex';
+import {
+  Navbar,
+  ItemListContainer,
+  ItemDetailContainer,
+  LogIn,
+  SignUp,
+  UserProfile,
+  Checkout,
+  NotFound,
+  OrderContainer,
+  OrderSearch,
+} from './components/componentsIndex';
 import 'react-toastify/dist/ReactToastify.css';
 import './scss/App.scss';
 
@@ -42,6 +53,8 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/category/:category" element={<ItemListContainer />} />
         <Route path="/item/:pid" element={<ItemDetailContainer />} />
+        <Route path="/orders/search" element={<OrderSearch />} />
+        <Route path="/orders/:oid" element={<OrderContainer />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <ToastContainer

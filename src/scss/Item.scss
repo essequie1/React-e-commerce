@@ -36,9 +36,10 @@
   }
   &__title {
     grid-area: title;
-    font-weight: 900;
+    font-weight: 600;
     font-size: $md;
     letter-spacing: -1px;
+    line-height: $md * 2;
     text-align: left;
     width: 100%;
     white-space: nowrap;

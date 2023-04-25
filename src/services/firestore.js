@@ -1,4 +1,4 @@
-import { getFirestore, collection, getDocs, query, where, updateDoc, doc, setDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, query, where, updateDoc, doc, setDoc, arrayUnion, arrayRemove, addDoc, getDoc } from 'firebase/firestore';
 import { app } from './firebaseConfig';
 
 const db = getFirestore(app);
@@ -45,4 +45,29 @@ export const removeItemFromWishlist = async (uid, product) => {
   await updateDoc(doc(db, 'users', uid), {
     wishlist: arrayRemove(product),
   });
+};
+
+export const createOrder = async orderData => {
+  await addDoc(collection(db, 'orders'), {
+    ...orderData,
+  });
+};
+
+export const getOrderByID = async orderID => {
+  const q = query(collection(db, 'orders'), where('orderID', '==', orderID));
+  const snapshot = await getDocs(q);
+  const order = snapshot.docs[0].data();
+
+  return order;
+};
+
+export const getOrderByEmail = async email => {
+  const q = query(collection(db, 'orders'), where('email', '==', email));
+  const snapshot = await getDocs(q);
+  const data = [];
+  snapshot.forEach(order => {
+    const orderData = order.data();
+    data.push(orderData);
+  });
+  return data;
 };

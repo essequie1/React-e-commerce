@@ -2,10 +2,20 @@ import { CheckoutInformation, CheckoutProduct, CheckoutWithAccount, CheckoutWith
 import { useProductsContext } from '../context/productsContext';
 import { useUserContext } from '../context/userContext';
 import '../scss/Checkout.scss';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export const Checkout = () => {
   const { cart } = useProductsContext();
   const { isLoggedIn } = useUserContext();
+  const navigation = useNavigate();
+
+  useEffect(() => {
+    if (cart.length === 0) {
+      navigation('/notfound');
+    }
+  }, []);
+
   return (
     <div className="checkout-container">
       <div className="checkout-main">

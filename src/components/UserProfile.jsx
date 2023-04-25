@@ -1,10 +1,13 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { logOut } from '../services/auth';
 import { useUserContext } from '../context/userContext';
 import { Loading } from './componentsIndex';
 import '../scss/UserProfile.scss';
+import { useEffect, useState } from 'react';
+import { getOrderByEmail } from '../services/firestore';
 
 export const UserProfile = () => {
+  const [userOrders, setUserOrders] = useState([]);
   const { userData, removeUserData, isLoggedIn } = useUserContext();
   const navigate = useNavigate();
 
@@ -13,6 +16,10 @@ export const UserProfile = () => {
       .then(() => removeUserData())
       .then(() => navigate('/'));
   };
+
+  useEffect(() => {
+    getOrderByEmail(userData.email).then(data => setUserOrders(data));
+  }, []);
 
   return (
     <>
@@ -29,7 +36,17 @@ export const UserProfile = () => {
             <p>Address</p>
             <h3>{`${userData.address}, ${userData.city}, ${userData.country} (${userData.zip})`}</h3>
             <p>Orders</p>
-            {/* {userData.orders.length > 0 ? userData.orders.map((order, idx) => <p>Order n°{idx}</p>) : <h3>You don't have pending orders...</h3>} */}
+            {userOrders.length > 0 ? (
+              userOrders.map(order => (
+                <div className="profile__orders">
+                  <Link to={`/orders/${order.orderID}`}>
+                    {order.orderID} <span class="material-symbols-outlined">arrow_forward</span>
+                  </Link>
+                </div>
+              ))
+            ) : (
+              <h3>You don't have pending orders...</h3>
+            )}
             <button onClick={handleLogOut}>Log Out</button>
           </div>
         </div>

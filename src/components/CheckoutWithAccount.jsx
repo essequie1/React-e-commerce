@@ -2,10 +2,15 @@ import { useUserContext } from '../context/userContext';
 import { useProductsContext } from '../context/productsContext';
 import '../scss/CheckoutWithAccount.scss';
 import { toast } from 'react-toastify';
+import { createOrder } from '../services/firestore';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const CheckoutWithAccount = ({ children }) => {
+  const [loading, setLoading] = useState(false);
   const { userData } = useUserContext();
-  const { cart } = useProductsContext();
+  const { cart, clearCart } = useProductsContext();
+  const navigation = useNavigate();
 
   const sizesSelected = cart.every(obj => Object.values(obj).every(value => value !== ''));
 
@@ -15,13 +20,25 @@ export const CheckoutWithAccount = ({ children }) => {
       ETA.setDate(ETA.getDate() + 7);
       const day = ETA.getDay();
       if (day === 0) {
-        ETA.setDate(ETA.getDate() + 1);
+        ETA.setDate(ETA.getDate() - 2);
       } else if (day === 6) {
-        ETA.setDate(ETA.getDate() + 2);
+        ETA.setDate(ETA.getDate() - 1);
       }
 
       const ID = 'OP-' + Date.parse(ETA) + Date.now() + cart.length.toString().padStart(3, '0');
-      const order = { name: userData.name, email: userData.email, address: userData.address, orderProducts: cart, orderID: ID, ETA: ETA };
+      const order = { email: userData.email, address: userData.address, orderProducts: cart, orderID: ID, ETA: ETA.getTime() };
+      const addOrderToDatabase = async () => {
+        setLoading(true);
+        await toast
+          .promise(createOrder(order), {
+            pending: 'Generating Order...',
+            success: 'Order generated successfully',
+            error: 'An error occured, please try again',
+          })
+          .then(() => clearCart())
+          .then(() => navigation(`/orders/${ID}`));
+      };
+      addOrderToDatabase();
     } else {
       toast.error('Please select sizes for all the clothes!');
     }
@@ -48,8 +65,8 @@ export const CheckoutWithAccount = ({ children }) => {
         </span>
       </div>
       {children}
-      <button onClick={handleData} className="checkout-data__submit">
-        Payment
+      <button disabled={loading} onClick={handleData} className="checkout-data__submit">
+        {loading ? 'Loading...' : 'Payment'}
       </button>
     </>
   );
