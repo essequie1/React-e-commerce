@@ -28,12 +28,7 @@
     overflow-y: scroll;
   }
   &__link {
-    color: $black;
+    @include link-with-arrow();
     align-self: center;
-    display: flex;
-    text-decoration: none;
-    gap: 5px;
-    align-items: center;
-    border-bottom: 1px solid $black;
   }
 }

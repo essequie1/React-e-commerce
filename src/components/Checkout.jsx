@@ -14,7 +14,7 @@ export const Checkout = () => {
     if (cart.length === 0) {
       navigation('/notfound');
     }
-  }, []);
+  }, [cart]);
 
   return (
     <div className="checkout-container">

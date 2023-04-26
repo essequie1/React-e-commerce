@@ -1,46 +1,35 @@
-import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useToggleMenu } from '../hooks/useToggleMenu';
 import { useUserContext } from '../context/userContext';
 import '../scss/SessionWidget.scss';
 
 export const SessionWidget = () => {
-  const [isMenuShown, setIsMenuShown] = useState(false);
+  const { isShown, toggleRef, handleToggle } = useToggleMenu();
   const { isLoggedIn } = useUserContext();
   const navigate = useNavigate();
 
-  // Effect for menu closing when clicking outside of it
-  useEffect(() => {
-    const closeMenu = e => {
-      if (e.composedPath()[0].className !== 'session__menu' && e.composedPath()[0].className !== 'session-widget-icon material-symbols-outlined') {
-        setIsMenuShown(false);
-      }
-    };
-    document.body.addEventListener('click', closeMenu);
-    return () => document.body.removeEventListener('click', closeMenu);
-  }, []);
-
   const handleLogIn = () => {
     navigate('/login');
-    setIsMenuShown(false);
+    handleToggle();
   };
 
   const handleSignUp = () => {
     navigate('/signup');
-    setIsMenuShown(false);
+    handleToggle();
   };
 
   return (
-    <div className="session-widget">
+    <div ref={toggleRef} className="session-widget">
       {isLoggedIn ? (
         <button className="session-widget__btn" onClick={() => navigate('/profile')}>
           <span className="session-widget-icon material-symbols-outlined">account_circle</span>
         </button>
       ) : (
         <>
-          <button className="session-widget__btn" onClick={() => setIsMenuShown(curr => !curr)}>
+          <button className="session-widget__btn" onClick={() => handleToggle()}>
             <span className="session-widget-icon material-symbols-outlined">login</span>
           </button>
-          {isMenuShown ? (
+          {isShown ? (
             <div className="user-menu">
               <button onClick={handleLogIn}>Log In</button>
               <button onClick={handleSignUp}>Sign Up</button>

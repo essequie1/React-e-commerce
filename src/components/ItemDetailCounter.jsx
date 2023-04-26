@@ -6,7 +6,7 @@ export const ItemDetailCounter = ({ quantity, setQuantity }) => {
         -
       </button>
       <p className="quantity__value">{quantity}</p>
-      <button className="quantity__btn" onClick={() => setQuantity(curr => curr + 1)}>
+      <button className="quantity__btn" disabled={quantity > 4} onClick={() => setQuantity(curr => curr + 1)}>
         +
       </button>
     </div>

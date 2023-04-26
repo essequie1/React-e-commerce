@@ -1,6 +1,6 @@
 import { addItemToWishlist, removeItemFromWishlist } from '../services/firestore';
 import { useUserContext } from '../context/userContext';
-import { checkWishlist } from '../helper/checkWishlist';
+import { checkWishlist } from '../helpers/checkWishlist';
 import { toast } from 'react-toastify';
 
 export const AddToWishlist = ({ product, variation }) => {

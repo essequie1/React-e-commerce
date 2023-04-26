@@ -1,7 +1,7 @@
 import { getOrderByID } from '../services/firestore';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { useRef, useState } from 'react';
+import { toast } from 'react-toastify';
 import '../scss/OrderSearch.scss';
 
 export const OrderSearch = () => {
@@ -19,7 +19,6 @@ export const OrderSearch = () => {
         navigation(`/orders/${orderID}`);
       })
       .catch(() => {
-        console.log('Erorr ID');
         toast.error('This order does not exists');
         setIsSearching(false);
         inputRef.current.value = '';
@@ -30,7 +29,7 @@ export const OrderSearch = () => {
     <div className="orderSearch-container">
       <form onSubmit={handleSearchOrder}>
         <label>
-          Your OrderID:
+          Search by OrderID:
           <input ref={inputRef} placeholder="OP-45123..." style={{ width: '500px' }} required name="id" type="text" />
         </label>
         <button disabled={isSearching} type="submit">

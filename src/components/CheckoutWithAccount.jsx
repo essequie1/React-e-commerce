@@ -1,44 +1,35 @@
+import { useState } from 'react';
 import { useUserContext } from '../context/userContext';
 import { useProductsContext } from '../context/productsContext';
-import '../scss/CheckoutWithAccount.scss';
-import { toast } from 'react-toastify';
 import { createOrder } from '../services/firestore';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { checkSelectedSizes } from '../helpers/checkSelectedSizes';
+import { toast } from 'react-toastify';
+import { generateOrderID } from '../helpers/generateOrderID';
+import { getETA } from '../helpers/getETA';
+import '../scss/CheckoutWithAccount.scss';
 
 export const CheckoutWithAccount = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const { userData } = useUserContext();
   const { cart, clearCart } = useProductsContext();
+  const sizesSelected = checkSelectedSizes(cart);
   const navigation = useNavigate();
 
-  const sizesSelected = cart.every(obj => Object.values(obj).every(value => value !== ''));
-
-  const handleData = () => {
+  const handleData = async () => {
     if (sizesSelected) {
-      const ETA = new Date();
-      ETA.setDate(ETA.getDate() + 7);
-      const day = ETA.getDay();
-      if (day === 0) {
-        ETA.setDate(ETA.getDate() - 2);
-      } else if (day === 6) {
-        ETA.setDate(ETA.getDate() - 1);
-      }
-
-      const ID = 'OP-' + Date.parse(ETA) + Date.now() + cart.length.toString().padStart(3, '0');
+      const ETA = getETA();
+      const ID = generateOrderID(cart, ETA);
       const order = { email: userData.email, address: userData.address, orderProducts: cart, orderID: ID, ETA: ETA.getTime() };
-      const addOrderToDatabase = async () => {
-        setLoading(true);
-        await toast
-          .promise(createOrder(order), {
-            pending: 'Generating Order...',
-            success: 'Order generated successfully',
-            error: 'An error occured, please try again',
-          })
-          .then(() => clearCart())
-          .then(() => navigation(`/orders/${ID}`));
-      };
-      addOrderToDatabase();
+      setLoading(true);
+      await toast
+        .promise(createOrder(order), {
+          pending: 'Generating Order...',
+          success: 'Order generated successfully',
+          error: 'An error occured, please try again',
+        })
+        .then(() => clearCart())
+        .then(() => navigation(`/orders/${ID}`));
     } else {
       toast.error('Please select sizes for all the clothes!');
     }

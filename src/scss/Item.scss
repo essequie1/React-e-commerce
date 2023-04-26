@@ -6,7 +6,7 @@
   list-style-type: none;
   transition: transform 50ms, outline 50ms;
   outline: 1px solid transparent;
-  outline-offset: 0.5rem;
+  outline-offset: 1rem;
   &:hover {
     transform: scale(1.025);
     outline: 1px solid rgb(0, 0, 0, 0.1);
@@ -15,7 +15,7 @@
 
 .product {
   width: 20rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
   text-decoration: none;
   display: grid;
   justify-content: center;

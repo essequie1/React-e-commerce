@@ -27,7 +27,7 @@ export const CartNotice = ({ removeNotice, closeMenu }) => {
         </button>
       </div>
       <Link onClick={() => handleCheckout()} className="checkout-confirmation__proceed" to={'/checkout'}>
-        Proceed to checkout anyways...
+        Proceed to checkout anyways<span className="material-symbols-outlined">arrow_forward</span>
       </Link>
     </div>
   );

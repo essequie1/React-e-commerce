@@ -1,29 +1,37 @@
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import { useProductsContext } from '../context/productsContext';
+import { checkSelectedSizes } from '../helpers/checkSelectedSizes';
+import { generateOrderID } from '../helpers/generateOrderID';
+import { getETA } from '../helpers/getETA';
+import { createOrder } from '../services/firestore';
 import '../scss/CheckoutWithoutAccount.scss';
 
 export const CheckoutWithoutAccount = ({ children }) => {
-  const { cart } = useProductsContext();
+  const [loading, setLoading] = useState(false);
+  const { cart, clearCart } = useProductsContext();
+  const sizesSelected = checkSelectedSizes(cart);
+  const navigation = useNavigate();
 
-  const sizesSelected = cart.every(obj => Object.values(obj).every(value => value !== ''));
-
-  const handleForm = e => {
+  const handleForm = async e => {
     e.preventDefault();
     if (sizesSelected) {
       const fields = new FormData(e.target);
       const form = Object.fromEntries(fields);
 
-      const ETA = new Date();
-      ETA.setDate(ETA.getDate() + 7);
-      const day = ETA.getDay();
-      if (day === 0) {
-        ETA.setDate(ETA.getDate() + 1);
-      } else if (day === 6) {
-        ETA.setDate(ETA.getDate() + 2);
-      }
-
-      const ID = 'OP-' + Date.parse(ETA) + Date.now() + cart.length.toString().padStart(3, '0');
-      const order = { name: userData.name, email: userData.email, address: userData.address, orderProducts: cart, orderID: ID, ETA: ETA };
+      const ETA = getETA();
+      const ID = generateOrderID(cart, ETA);
+      const order = { name: form.name, email: form.email, address: form.address, orderProducts: cart, orderID: ID, ETA: ETA };
+      setLoading(true);
+      await toast
+        .promise(createOrder(order), {
+          pending: 'Generating Order...',
+          success: 'Order generated successfully',
+          error: 'An error occured, please try again',
+        })
+        .then(() => clearCart())
+        .then(() => navigation(`/orders/${ID}`));
     } else {
       toast.error('Please select sizes for all the clothes!');
     }
@@ -45,8 +53,8 @@ export const CheckoutWithoutAccount = ({ children }) => {
           <input name="address" required placeholder="742 Evergreen Terrace, Springfield MA" type="text" />
         </label>
         {children}
-        <button type="submit" className="checkout-form__submit">
-          Payment
+        <button disabled={loading} type="submit" className="checkout-form__submit">
+          {loading ? 'Loading...' : 'Payment'}
         </button>
       </form>
     </>

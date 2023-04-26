@@ -1,7 +1,7 @@
-import { toast } from 'react-toastify';
-import { useUserContext } from '../context/userContext';
-import { useProductsContext } from '../context/productsContext';
 import { removeItemFromWishlist } from '../services/firestore';
+import { useProductsContext } from '../context/productsContext';
+import { useUserContext } from '../context/userContext';
+import { toast } from 'react-toastify';
 import '../scss/WishlistProduct.scss';
 
 export const WishlistProduct = ({ product }) => {

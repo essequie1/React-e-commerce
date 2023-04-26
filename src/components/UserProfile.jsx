@@ -8,12 +8,12 @@ import { getOrderByEmail } from '../services/firestore';
 
 export const UserProfile = () => {
   const [userOrders, setUserOrders] = useState([]);
-  const { userData, removeUserData, isLoggedIn } = useUserContext();
+  const { userData, removeUserDataFromContext, isLoggedIn } = useUserContext();
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
     await logOut()
-      .then(() => removeUserData())
+      .then(() => removeUserDataFromContext())
       .then(() => navigate('/'));
   };
 
@@ -40,7 +40,7 @@ export const UserProfile = () => {
               userOrders.map(order => (
                 <div className="profile__orders">
                   <Link to={`/orders/${order.orderID}`}>
-                    {order.orderID} <span class="material-symbols-outlined">arrow_forward</span>
+                    {order.orderID} <span className="material-symbols-outlined">arrow_forward</span>
                   </Link>
                 </div>
               ))

@@ -7,31 +7,30 @@ import { getUserData } from '../services/firestore';
 import '../scss/LogIn.scss';
 
 export const LogIn = () => {
-  const { addUserData } = useUserContext();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
-
+  const { addUserDataToContext } = useUserContext();
   const navigate = useNavigate();
-
-  const handleSubmit = async e => {
-    e.preventDefault();
-    const id = toast.loading('Logging in...');
-    await logIn(formData)
-      .then(user => getUserData(user.uid))
-      .then(data => addUserData(data[0]))
-      .then(() => {
-        navigate('/');
-        toast.update(id, { render: 'Logged in Successfully', type: 'success', isLoading: false, autoClose: 3000 });
-      });
-  };
 
   const handleOnChange = e => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const id = toast.loading('Logging in...');
+    await logIn(formData)
+      .then(user => getUserData(user.uid))
+      .then(data => addUserDataToContext(data))
+      .then(() => {
+        navigate('/');
+        toast.update(id, { render: 'Logged in Successfully', type: 'success', isLoading: false, autoClose: 3000 });
+      });
   };
 
   return (

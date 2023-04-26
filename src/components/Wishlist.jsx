@@ -1,5 +1,5 @@
-import { useUserContext } from '../context/userContext';
 import { WishlistProduct } from './componentsIndex';
+import { useUserContext } from '../context/userContext';
 import '../scss/Wishlist.scss';
 
 export const Wishlist = () => {

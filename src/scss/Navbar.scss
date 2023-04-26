@@ -28,6 +28,7 @@
     font-weight: 400;
     transition: all 150ms;
     &--selected {
+      pointer-events: none;
       cursor: default;
       font-weight: 900;
       font-size: $sm;

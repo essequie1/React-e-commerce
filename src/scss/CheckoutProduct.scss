@@ -45,15 +45,23 @@
   }
   &__remove {
     background: transparent;
-    cursor: pointer;
     width: 1rem;
     .remove-icon {
       font-size: 1rem;
       color: $black;
       transition: color 150ms;
       vertical-align: middle;
-      &:hover {
+    }
+    &:enabled {
+      cursor: pointer;
+      .remove-icon:hover {
         color: $red;
+      }
+    }
+    &:disabled {
+      cursor: default;
+      .remove-icon {
+        color: transparent;
       }
     }
   }

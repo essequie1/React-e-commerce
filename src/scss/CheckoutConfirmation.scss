@@ -29,7 +29,6 @@
     justify-self: left;
   }
   &__proceed {
-    grid-area: proceed;
-    color: black;
+    @include link-with-arrow();
   }
 }

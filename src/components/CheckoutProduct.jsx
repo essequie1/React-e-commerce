@@ -2,7 +2,7 @@ import { useProductsContext } from '../context/productsContext';
 import '../scss/CheckoutProduct.scss';
 
 export const CheckoutProduct = ({ prod }) => {
-  const { changeProductSize, changeProductQuantity, removeFromCart, sizes } = useProductsContext();
+  const { changeProductSize, changeProductQuantity, removeFromCart, sizes, cart } = useProductsContext();
 
   const handleQuantityChange = (e, prodId) => {
     if (e.target.validity.valid) {
@@ -33,7 +33,7 @@ export const CheckoutProduct = ({ prod }) => {
         max={5}
       />
       <p className="checkout-product__price">$ {(prod.price * prod.selectedQuantity).toFixed(2)}</p>
-      <button className="checkout-product__remove" onClick={() => removeFromCart(prod.id)}>
+      <button disabled={cart.length === 1} className="checkout-product__remove" onClick={() => removeFromCart(prod.id)}>
         <span className="material-symbols-outlined remove-icon">delete</span>
       </button>
     </div>

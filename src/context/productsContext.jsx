@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import { reducer, initialState, actions } from '../hooks/useData';
+import { getProducts } from '../services/firestore';
 
 const productsContext = createContext([]);
 
@@ -37,6 +38,12 @@ export const ProductsProvider = ({ children }) => {
     },
   };
 
+  // Effect to get products from Firebase on first render
+  useEffect(() => {
+    getProducts().then(data => dispatch({ type: actions.ADD_DATA, data }));
+  }, []);
+
+  // Effect to save cart to local storage
   useEffect(() => {
     if (state.cart == []) {
       localStorage.getItem();

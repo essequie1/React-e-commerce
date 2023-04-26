@@ -1,5 +1,5 @@
-import { Link, NavLink } from 'react-router-dom';
 import { CartWidget, WishlistWidget, SessionWidget } from './componentsIndex';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/logo-light.svg';
 import '../scss/Navbar.scss';
 

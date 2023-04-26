@@ -20,12 +20,13 @@ export const SignUp = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    await toast.promise(signUp(formData), {
-      pending: 'Creating Account...',
-      success: 'Account created, please log in',
-      error: 'An error occured, please try again',
-    });
-    navigate('/login');
+    await toast
+      .promise(signUp(formData), {
+        pending: 'Creating Account...',
+        success: 'Account created, please log in',
+        error: 'An error occured, please try again',
+      })
+      .finally(() => navigate('/login'));
   };
 
   const handleOnChange = e => {

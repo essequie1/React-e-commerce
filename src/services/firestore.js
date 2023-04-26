@@ -18,13 +18,8 @@ export const getProducts = async () => {
 };
 
 export const getUserData = async userUID => {
-  const q = query(collection(db, 'users'), where('uid', '==', userUID));
-  const snapshot = await getDocs(q);
-  const data = [];
-  snapshot.forEach(user => {
-    const userData = user.data();
-    data.push(userData);
-  });
+  const doctoGet = await getDoc(doc(db, 'users', userUID));
+  const data = doctoGet.data();
   return data;
 };
 

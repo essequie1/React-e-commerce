@@ -1,44 +1,44 @@
-import { useState } from 'react';
-import { useProductsContext } from '../context/productsContext';
 import { AddToWishlist, ItemDetailCounter } from './componentsIndex';
+import { useProductsContext } from '../context/productsContext';
+import { useState } from 'react';
 import { brands } from '../assets/imagesIndex';
-import { checkCart } from '../helper/checkCart';
+import { checkCart } from '../helpers/checkCart';
 import { toast } from 'react-toastify';
 import '../scss/ItemDetail.scss';
 
 export const ItemDetail = ({ product }) => {
-  const { addToCart, cart, changeProductQuantity, sizes } = useProductsContext();
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState('');
   const [variation, setVariation] = useState(0);
-  const isItemInCart = checkCart(cart, product.id + product.variations[variation].color);
+  const { addToCart, cart, changeProductQuantity, sizes } = useProductsContext();
+  const prodID = product.id + product.variations[variation].color;
+  const prodVariation = product.variations[variation];
+  const isItemInCart = checkCart(cart, prodID);
 
   const handleAddToCart = () => {
     if (size === '') {
       toast.error('Please select a size first');
     } else {
       if (isItemInCart) {
-        const productInCartQty = cart.find(prod => prod.id === product.id + product.variations[variation].color).selectedQuantity;
+        const productInCartQty = cart.find(prod => prod.id === prodID).selectedQuantity;
         const newQuantity = productInCartQty + quantity;
         if (newQuantity > 5) {
           toast.error('Maximum amount per item is 5...');
         } else {
-          changeProductQuantity(product.id + product.variations[variation].color, newQuantity);
+          changeProductQuantity(prodID, newQuantity);
           toast.success('Products added, new quantity is ' + newQuantity);
         }
       } else {
         const { variations, gender, description, ...newItem } = product;
         const itemToAdd = {
           ...newItem,
-          image: product.variations[variation].images[0],
-          color: product.variations[variation].color,
+          image: prodVariation.images[0],
+          color: prodVariation.color,
           selectedSize: size,
           selectedQuantity: quantity,
-          id: product.id + product.variations[variation].color,
+          id: prodID,
         };
-        if (!isItemInCart) {
-          addToCart(itemToAdd);
-        }
+        addToCart(itemToAdd);
         toast.success('Product added to bag');
       }
     }
@@ -47,8 +47,8 @@ export const ItemDetail = ({ product }) => {
   return (
     <div className="details">
       <div className="details__images">
-        <img src={product.variations[variation].images[0]} alt="" />
-        <img src={product.variations[variation].images[1]} alt="" />
+        <img src={prodVariation.images[0]} alt="" />
+        <img src={prodVariation.images[1]} alt="" />
         <img className="brand" src={brands[product.brand]} alt={product.brand} />
       </div>
       <div className="details__sidebar">
@@ -83,7 +83,7 @@ export const ItemDetail = ({ product }) => {
           <button onClick={handleAddToCart} className="buttons__cart">
             Add to bag
           </button>
-          <AddToWishlist product={product} variation={product.variations[variation]} />
+          <AddToWishlist product={product} variation={prodVariation} />
         </div>
       </div>
     </div>
