@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { OrderProduct, Loading } from './componentsIndex';
 import { getOrderByID } from '../services/firestore';
 import { toast } from 'react-toastify';
@@ -10,6 +10,7 @@ export const OrderContainer = () => {
   const [ETA, setETA] = useState();
   const { oid } = useParams();
   const navigation = useNavigate();
+  console.log(window.history);
 
   useEffect(() => {
     getOrderByID(oid)

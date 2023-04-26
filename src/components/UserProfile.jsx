@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { getOrderByEmail } from '../services/firestore';
 
 export const UserProfile = () => {
+  const [loading, setLoading] = useState(true);
   const [userOrders, setUserOrders] = useState([]);
   const { userData, removeUserDataFromContext, isLoggedIn } = useUserContext();
   const navigate = useNavigate();
@@ -18,7 +19,9 @@ export const UserProfile = () => {
   };
 
   useEffect(() => {
-    getOrderByEmail(userData.email).then(data => setUserOrders(data));
+    getOrderByEmail(userData.email)
+      .then(data => setUserOrders(data))
+      .then(() => setLoading(false));
   }, []);
 
   return (
@@ -36,16 +39,22 @@ export const UserProfile = () => {
             <p>Address</p>
             <h3>{`${userData.address}, ${userData.city}, ${userData.country} (${userData.zip})`}</h3>
             <p>Orders</p>
-            {userOrders.length > 0 ? (
-              userOrders.map(order => (
-                <div className="profile__orders">
-                  <Link to={`/orders/${order.orderID}`}>
-                    {order.orderID} <span className="material-symbols-outlined">arrow_forward</span>
-                  </Link>
-                </div>
-              ))
+            {loading ? (
+              <Loading size={'small'} />
             ) : (
-              <h3>You don't have pending orders...</h3>
+              <div className="profile__orders">
+                {userOrders.length > 0 ? (
+                  userOrders.map(order => (
+                    <div key={order.orderID} className="profile__order">
+                      <Link to={`/orders/${order.orderID}`}>
+                        {order.orderID} <span className="material-symbols-outlined">arrow_forward</span>
+                      </Link>
+                    </div>
+                  ))
+                ) : (
+                  <p>You don't have pending orders...</p>
+                )}
+              </div>
             )}
             <button onClick={handleLogOut}>Log Out</button>
           </div>
