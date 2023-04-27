@@ -97,7 +97,7 @@ Las entregas fueron las siguientes:
 
   - [Firebase](https://www.npmjs.com/package/firebase) (Para Firestore, Storage y Auth ) 
   - [react-toastify](https://www.npmjs.com/package/react-toastify) (Para enviar notificaciones al usuario)
-  - [sass](https://www.npmjs.com/package/sass) (CSS Post-Proccessing)
+  - [sass](https://www.npmjs.com/package/sass) (Pre-procesado de CSS)
   - [react-router-dom](https://www.npmjs.com/package/react-router-dom) (Para el enrutado)
 
 # Algunas consideraciones
