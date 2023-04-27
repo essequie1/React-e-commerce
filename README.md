@@ -1,23 +1,23 @@
 [![español](https://img.shields.io/static/v1?label=lang&message=español&color=green)](https://github.com/essequie1/React-e-commerce/blob/master/README.es.md)
 
-# SARTORIAL
-
+![Logo Sartorial](https://firebasestorage.googleapis.com/v0/b/e-commerce-a78e1.appspot.com/o/loading.gif?alt=media&token=673d3ea1-0a94-475a-9876-f4a7f3787e98)
 Sartorial is an e-commerce web application made for a fictitious clothing store. It was developed in the course Frontend Development with React of [CoderHouse](https://www.coderhouse.com/), in the span of approximately 2 months (from May 7 to April 27, 2023).
-
-# 🛠️ **¡¡¡PROJECT IN DEVELOPMENT!!!** 🛠️
 
 Handovers were as follows:
   - **March 16th:** First pre-handover (Components).
   - **April 4th:** Second pre-handover (Routes).
   - **April 27th:** Final project.
   
-## 📚 Contents:
+# 📚 Contents
 
   - [Base requirements](#%EF%B8%8F-base-requirements)
   - [Extra requirements (Optional)](#%EF%B8%8F-extra-requirements-optional)
   - [My Approach](#%EF%B8%8F-my-approach)
+  - [Firebase](#-firebase)
+  - [Libraries used](#-libraries-used)
+  - [Considerations](#some-considerations)
 
-## ⚙️ Base requirements
+# ⚙️ Base requirements
 
   - **Index:**
     - The base Route ("/") shows all the available products, and also has access to the shopping cart (in the "/cart" route). The navbar should have categories that will show the products that are contained in the same category (in the "/categories/:categoryId" route).
@@ -35,7 +35,7 @@ Handovers were as follows:
   - **Checkout:**
     - The checkout proccess has to show the item quantities and the total price of the order, plus the option of adding adding user information (name, surname, phone and mail with verification). When doing the checkout the user should get prompted with an "orderId" to access the order information at any time.
     
-## 🕹️ Extra requirements (Optional)
+# 🕹️ Extra requirements (Optional)
 
   - [X] **Auth/Login:**
     - Implement a auth service from Firebase.
@@ -55,7 +55,54 @@ Handovers were as follows:
   - [X] **Persistent cart:**
     - Make the cart persistent utilizing localStorage or sessionStorage.
     
-  - [ ] **My orders:**
+  - [X] **My orders:**
     - With the orderId the user should be able to see all the information about the order he made without showing personal data.
     
-## 🛠️ My Approach
+# 🛠️ My Approach
+
+  ## Navbar
+  > The page header contains the navigation menu, with the logo providing a link back to the homepage. The user can filter products by category or brand and access their wishlist (if logged in) and cart, there's also a log-in/sign-up button, or an access to their profile (if already logged in).
+
+  ## Home
+  > The homepage displays all available products, with cards showing a product image, title, brand, category, price, and available color variations. When a user clicks on a card, they will be redirected to the corresponding product's detail page.
+
+  ## Item Details
+  > Each product has its own URL and detail page that shows two product images, the brand, the title, a description, the price, and options for selecting color variation, quantity, and size. Users can add the product to their wishlist or cart using the two buttons on the bottom of the sidebar.
+
+  ## User Session
+  > Users can log in or sign up at any time. The signup page requests basic user information and other data for orders. By logging in, users can access their wishlist and order history from their profile.
+
+  ## Profile Page
+  > The profile page displays a user's information and order history, which can be accessed at any time. Users can also log out from their account from this page.
+
+  ## The bag (Cart)
+  > Users can click on the bag icon in the navbar at anytime to view their cart and see the total number of products added. When at least one product is added, users can see the total order amount and have the option to checkout or clear their order. If a user is not logged in and attempts to checkout, they will receive a notice suggesting they create an account or log in, if they don't want to, they can still proceed to checkout.
+
+  ## Checkout
+  > Users can view all the products added to their cart during the shopping experience and make changes to the product size, quantity, or remove items from the order. The checkout process depends on the user session; if the user is logged in, they can simply click the "Payment" button to create the order. If the user is not logged in, they will need to fill out a form with information that will be used for the order.
+
+  ## Orders
+  > Once the checkout process is completed, users will receive an order confirmation with the number of products purchased and an estimated time of arrival (around 7 days). Each order has a unique ID that can be used to retrieve it's information by visiting the URL "/orders/search".
+
+# 🔥 Firebase
+
+  The database has 3 collections, one for the users, one for the orders, and one for the products.
+  - Instead of using Firebase Auth to store user information (and to stay on the Spark plan), the user data is stored on a separate collection (excluding their passwords), which is also used for saving the user's wishlist.
+
+  - The products are retrieved from the database and injected into a context to allow global use within the application. Each product has a unique ID and color variations, but there's currently no stock option as it is not implemented in the application. All product images are stored in Firebase Storage.
+
+  - The orders save the user data and product details for each order. They can be retrieved searching their unique ID in the url "/orders/search" or if the user is logged in, by looking up their profile page.
+
+# 📖 Libraries used
+
+  - [Firebase](https://www.npmjs.com/package/firebase) (For Database, Storage and Auth) 
+  - [react-toastify](https://www.npmjs.com/package/react-toastify) (To give the user notifications)
+  - [sass](https://www.npmjs.com/package/sass) (For CSS Post-Proccessing)
+  - [react-router-dom](https://www.npmjs.com/package/react-router-dom) (For routing)
+
+# Some Considerations
+
+  - The bag (cart) is persistent using localStorage, meaning that users can access their cart at any time and from anywhere.
+  - The application doesn't offer a payment option since it's not necessary. The payment button just that generates an order and redirects the user to the order details.
+  - The user's session is also persistent, meaning that if they close the browser tab, they will remain logged in and won't need to log in again when they reopen the website.
+  - The wishlist feature is integrated with Firebase, so every time a user adds or removes an item from their wishlist, a request is sent to the database.
