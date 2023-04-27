@@ -97,7 +97,7 @@ Handovers were as follows:
 
   - [Firebase](https://www.npmjs.com/package/firebase) (For Database, Storage and Auth) 
   - [react-toastify](https://www.npmjs.com/package/react-toastify) (To give the user notifications)
-  - [sass](https://www.npmjs.com/package/sass) (For CSS Post-Proccessing)
+  - [sass](https://www.npmjs.com/package/sass) (For CSS Pre-Proccessing)
   - [react-router-dom](https://www.npmjs.com/package/react-router-dom) (For routing)
 
 # Some Considerations
