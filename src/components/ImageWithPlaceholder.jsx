@@ -10,18 +10,8 @@ export const ImageWithPlaceholder = ({ src, alt, classname }) => {
 
   return (
     <>
-      {isLoading && (
-        <img loading="lazy" decoding="async" className={classname} src={placeholderImage} alt={alt} style={{ display: isLoading ? 'block' : 'none' }} />
-      )}
-      <img
-        loading="lazy"
-        decoding="async"
-        className={classname}
-        src={src}
-        alt={alt}
-        onLoad={handleImageLoad}
-        style={{ display: isLoading ? 'none' : 'block' }}
-      />
+      {isLoading && <img className={classname} src={placeholderImage} alt={alt} style={{ display: isLoading ? 'block' : 'none' }} />}
+      <img className={classname} src={src} alt={alt} onLoad={handleImageLoad} style={{ display: isLoading ? 'none' : 'block' }} />
     </>
   );
 };
