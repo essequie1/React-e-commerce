@@ -48,15 +48,6 @@ export const reducer = (state, action) => {
     // Get data from Firebase and populate the data array for the context.
     // Also turn the "variations" object into an array for simplicity.
     case actions.ADD_DATA:
-      for (let i = 0; i < action.data.length; i++) {
-        const variationsArr = [];
-        const variationsObj = Object.entries(action.data[i].variations);
-        variationsObj.map(prod => {
-          variationsArr.push(prod[1]);
-        });
-        action.data[i].variations = variationsArr;
-      }
-
       return {
         ...state,
         data: action.data,
@@ -85,14 +76,6 @@ export const reducer = (state, action) => {
         ...state,
         cart: filteredCart,
         cartTotal: calculateCartTotal(filteredCart),
-      };
-
-    // Filter the data from the context by a specified category.
-    case actions.FILTER_BY_CATEGORY:
-      const filteredCategory = state.data.filter(product => product.category === action.category);
-      return {
-        ...state,
-        selectedCategory: filteredCategory,
       };
 
     // Change a single product selected "size" property.
