@@ -40,3 +40,17 @@ export const SessionWidget = () => {
     </div>
   );
 };
+
+// SHIRTS
+// SWEATSHIRTS
+// T-SHIRTS
+// CARGOS
+// SLIPPERS
+// PANTS
+// DENIM
+// BAGS
+// JACKETS
+// HOODIES
+// HATS
+// SHORTS
+// SNEAKERS

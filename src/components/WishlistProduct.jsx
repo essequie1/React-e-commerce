@@ -1,30 +1,31 @@
 import { removeItemFromWishlist } from '../services/firestore';
 import { useProductsContext } from '../context/productsContext';
 import { useUserContext } from '../context/userContext';
+import { checkCart } from '../helpers/checkCart';
 import { toast } from 'react-toastify';
 import '../scss/WishlistProduct.scss';
 
 export const WishlistProduct = ({ product }) => {
   const { userData, removeFromWishlist } = useUserContext();
   const { addToCart, cart } = useProductsContext();
-
-  const isInsideCart = cart.find(obj => obj.id === product.id);
+  const isItemInCart = checkCart(cart, product.id);
 
   const handleRemove = () => {
-    const notification = toast.loading('Removing...');
-    removeItemFromWishlist(userData.uid, product)
-      .then(() => removeFromWishlist(product.id))
-      .finally(() => toast.update(notification, { render: 'Product removed from wishlist', type: 'success', autoClose: 3000, isLoading: false }));
+    toast
+      .promise(removeItemFromWishlist(userData.uid, product), {
+        pending: 'Removing...',
+        success: 'Product removed from wishlist',
+        error: 'An error occurred, try again later',
+      })
+      .then(() => removeFromWishlist(product.id));
   };
 
   const handleAddToCart = () => {
-    const itemToAdd = { ...product, selectedSize: '' };
-    if (isInsideCart) {
-      toast.error('This product is already inside your bag');
-    } else {
-      addToCart(itemToAdd);
-      toast.success('Product added to bag');
-    }
+    if (isItemInCart) return toast.error('This product is already inside your bag');
+
+    const itemToAdd = { ...product, selectedSize: '', selectedQuantity: 1 };
+    addToCart(itemToAdd);
+    toast.success('Product added to bag');
   };
 
   return (

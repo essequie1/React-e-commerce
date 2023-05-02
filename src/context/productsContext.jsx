@@ -27,9 +27,6 @@ export const ProductsProvider = ({ children }) => {
     removeFromCart: id => {
       dispatch({ type: actions.REMOVE_PRODUCT, id });
     },
-    filterByCategory: category => {
-      dispatch({ type: actions.FILTER_BY_CATEGORY, category });
-    },
     changeProductSize: (id, size) => {
       dispatch({ type: actions.CHANGE_PRODUCT_SIZE, id, size });
     },

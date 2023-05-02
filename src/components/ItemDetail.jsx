@@ -47,8 +47,8 @@ export const ItemDetail = ({ product }) => {
   return (
     <div className="details">
       <div className="details__images">
-        <img src={prodVariation.images[0]} alt="" />
-        <img src={prodVariation.images[1]} alt="" />
+        <img loading="lazy" decoding="async" src={prodVariation.images[0]} alt="" />
+        <img loading="lazy" decoding="async" src={prodVariation.images[1]} alt="" />
         <img className="brand" src={brands[product.brand]} alt={product.brand} />
       </div>
       <div className="details__sidebar">
@@ -59,14 +59,16 @@ export const ItemDetail = ({ product }) => {
         </div>
         <div className="variations">
           <p className="variations__title">COLORS:</p>
-          {product.variations.map((product, idx) => (
-            <button
-              className={variation === idx ? 'variations__btn--active' : 'variations__btn'}
-              key={product.color}
-              onClick={() => setVariation(idx)}
-              style={{ backgroundColor: product.color }}
-            ></button>
-          ))}
+          <div className="variations__buttons">
+            {product.variations.map((product, idx) => (
+              <button
+                className={variation === idx ? 'variations__btn--active' : 'variations__btn'}
+                key={product.color}
+                onClick={() => setVariation(idx)}
+                style={{ backgroundColor: product.color }}
+              ></button>
+            ))}
+          </div>
         </div>
         <ItemDetailCounter setQuantity={setQuantity} quantity={quantity} />
         <div className="sizes">
@@ -81,7 +83,7 @@ export const ItemDetail = ({ product }) => {
         </div>
         <div className="buttons">
           <button onClick={handleAddToCart} className="buttons__cart">
-            Add to bag
+            ADD TO BAG
           </button>
           <AddToWishlist product={product} variation={prodVariation} />
         </div>

@@ -8,29 +8,33 @@ export const AddToWishlist = ({ product, variation }) => {
   const isItemInWishlist = checkWishlist(wishlist, product.id + variation.color);
 
   const handleWishlist = () => {
-    if (isLoggedIn) {
-      const { variations, gender, description, ...newItem } = product;
-      const itemToAdd = {
-        ...newItem,
-        image: variation.images[0],
-        color: variation.color,
-        selectedQuantity: 1,
-        id: product.id + variation.color,
-      };
+    if (!isLoggedIn) return toast.error('You have to log in to add items to your wishlist');
 
-      const notification = toast.loading('Loading...');
+    const { variations, gender, description, ...newItem } = product;
+    const itemToAdd = {
+      ...newItem,
+      image: variation.images[0],
+      color: variation.color,
+      selectedQuantity: 1,
+      id: product.id + variation.color,
+    };
 
-      if (isItemInWishlist) {
-        removeItemFromWishlist(userData.uid, itemToAdd)
-          .then(() => removeFromWishlist(itemToAdd.id))
-          .then(() => toast.update(notification, { render: 'Product removed from wishlist', type: 'success', autoClose: 3000, isLoading: false }));
-      } else {
-        addItemToWishlist(userData.uid, itemToAdd)
-          .then(() => addToWishlist(itemToAdd))
-          .then(() => toast.update(notification, { render: 'Product added to wishlist', type: 'success', autoClose: 3000, isLoading: false }));
-      }
+    if (isItemInWishlist) {
+      toast
+        .promise(removeItemFromWishlist(userData.uid, itemToAdd), {
+          pending: 'Removing from wishlist...',
+          success: 'Product removed from wishlist',
+          error: 'An error occurred, please try again later',
+        })
+        .then(() => removeFromWishlist(itemToAdd.id));
     } else {
-      toast.error('You have to log in to add items to your wishlist');
+      toast
+        .promise(addItemToWishlist(userData.uid, itemToAdd), {
+          pending: 'Adding to wishlist...',
+          success: 'Product added to wishlist',
+          error: 'An error occurred, please try again later',
+        })
+        .then(() => addToWishlist(itemToAdd));
     }
   };
 
