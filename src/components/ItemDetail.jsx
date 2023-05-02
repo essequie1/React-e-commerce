@@ -1,4 +1,4 @@
-import { AddToWishlist, ItemDetailCounter } from './componentsIndex';
+import { AddToWishlist, ImageWithPlaceholder, ItemDetailCounter } from './componentsIndex';
 import { useProductsContext } from '../context/productsContext';
 import { useState } from 'react';
 import { brands } from '../assets/imagesIndex';
@@ -47,8 +47,8 @@ export const ItemDetail = ({ product }) => {
   return (
     <div className="details">
       <div className="details__images">
-        <img loading="lazy" decoding="async" src={prodVariation.images[0]} alt="" />
-        <img loading="lazy" decoding="async" src={prodVariation.images[1]} alt="" />
+        <img loading="lazy" decoding="async" src={prodVariation.images[0]} alt={product.title} />
+        <img loading="lazy" decoding="async" src={prodVariation.images[1]} alt={product.title} />
         <img className="brand" src={brands[product.brand]} alt={product.brand} />
       </div>
       <div className="details__sidebar">

@@ -9,9 +9,6 @@
   }
   &-icon {
     color: $white;
-    transition: all 100ms;
-    &:hover {
-      color: $yellow;
-    }
+    transition: color 100ms;
   }
 }

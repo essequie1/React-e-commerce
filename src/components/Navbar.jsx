@@ -1,13 +1,12 @@
 import { CartWidget, WishlistWidget, SessionWidget, CategoriesMenu, BrandsMenu } from './componentsIndex';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo-light.svg';
 import '../scss/Navbar.scss';
 
 export const Navbar = () => {
   return (
     <header className="header">
       <Link to="/">
-        <img className="header__logo" src={logo} alt="SARTORIAL" />
+        <h1 className="header__logo">SARTORIAL</h1>
       </Link>
       <nav className="nav">
         <CategoriesMenu />

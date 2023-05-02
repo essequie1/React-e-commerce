@@ -75,24 +75,24 @@
   }
   &__buttons {
     display: flex;
-    gap: 10px;
+    gap: 15px;
   }
   &__btn {
     width: 40px;
     height: 40px;
     cursor: pointer;
     transition: outline 100ms;
-    outline: 1px solid transparent;
+    outline: 2px solid transparent;
     outline-offset: 2px;
     &:hover {
-      outline: 1px solid $black;
+      outline: 2px solid $black;
       outline-offset: 2px;
     }
     &--active {
       transition: outline 100ms;
       width: 40px;
       height: 40px;
-      outline: 1px solid $black;
+      outline: 2px solid $black;
       outline-offset: 2px;
     }
   }
@@ -114,7 +114,7 @@
     line-height: 3rem;
     text-align: center;
     box-shadow: 3px 3px 0 0 $accent;
-    border: 1px solid $black;
+    border: 2px solid $black;
     font-weight: 600;
   }
   &__btn {
@@ -163,10 +163,10 @@
     transition: box-shadow 100ms;
     &:hover {
       box-shadow: 3px 3px 0 0 $accent;
-      border: 1px solid $black;
+      border: 2px solid $black;
     }
     &--active {
-      border: 1px solid $black;
+      border: 2px solid $black;
       height: 3.25rem;
       width: 3.25rem;
       font-size: $md;

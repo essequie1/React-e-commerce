@@ -6,9 +6,9 @@
   flex-direction: column;
   list-style-type: none;
   transition: box-shadow 100ms, outline 100ms;
-  outline: 1px solid transparent;
+  outline: 2px solid transparent;
   &:hover {
-    outline: 1px solid $black;
+    outline: 2px solid $black;
     box-shadow: 5px 5px 0 0 $accent;
     & .product {
       &__brand {
@@ -33,6 +33,7 @@
     'title title'
     'category category'
     'variations variations';
+  color: $black;
   &__image {
     padding: 20px;
     grid-area: image;

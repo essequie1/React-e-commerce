@@ -10,9 +10,6 @@
   &-icon {
     color: $white;
     transition: all 100ms;
-    &:hover {
-      color: $yellow;
-    }
   }
 }
 
@@ -24,9 +21,9 @@
   flex-direction: column;
   gap: 10px;
   width: 100px;
-  background-color: white;
-  border: 1px solid $grey;
-  border-radius: 5px;
+  background-color: $white;
+  box-shadow: 3px 3px $accent;
+  border: 2px solid $black;
   padding: 10px;
   button {
     @include button-with-border();

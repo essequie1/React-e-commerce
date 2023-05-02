@@ -8,6 +8,7 @@ export { CheckoutProduct } from './CheckoutProduct';
 export { CheckoutWithAccount } from './CheckoutWithAccount';
 export { CheckoutWithoutAccount } from './CheckoutWithoutAccount';
 export { Filter } from './Filter';
+export { ImageWithPlaceholder } from './ImageWithPlaceholder';
 export { Item } from './Item';
 export { ItemDetail } from './ItemDetail';
 export { ItemDetailContainer } from './ItemDetailContainer';

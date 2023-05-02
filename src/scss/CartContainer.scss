@@ -11,7 +11,7 @@
   gap: 20px;
   position: absolute;
   z-index: 4000;
-  width: 420px;
+  width: 450px;
   height: 100svh;
   background-color: white;
   box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.5);
@@ -71,7 +71,7 @@
       @include rounded-button-fill($black, $white, 15px 15px);
     }
     .clear-cart {
-      @include rounded-button-fill(#e9190f, $white, 15px 15px);
+      @include rounded-button-border($black, $black, 15px 15px);
       span {
         line-height: 1rem;
         vertical-align: middle;
@@ -95,13 +95,13 @@
     transform: translateX(0px);
   }
   100% {
-    transform: translateX(-420px);
+    transform: translateX(-450px);
   }
 }
 
 @keyframes hideMenu {
   0% {
-    transform: translateX(-420px);
+    transform: translateX(-450px);
   }
   50% {
     transform: translateX(0px);

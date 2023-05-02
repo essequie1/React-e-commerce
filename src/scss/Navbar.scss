@@ -11,9 +11,19 @@
   position: sticky;
   top: 0;
   z-index: 500;
+  a {
+    text-decoration: none;
+  }
   &__logo {
-    height: 2rem;
-    width: auto;
+    font-family: 'Medula One', cursive;
+    font-size: 5rem;
+    color: $white;
+    transition: text-shadow 100ms, transform 100ms;
+    &:hover {
+      color: $black;
+      text-shadow: 3px 3px $accent;
+      transform: translate(-3px, -3px);
+    }
   }
 }
 

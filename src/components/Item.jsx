@@ -1,3 +1,4 @@
+import { ImageWithPlaceholder } from './componentsIndex';
 import { Link } from 'react-router-dom';
 import { memo } from 'react';
 import { brands } from '../assets/imagesIndex';
@@ -7,7 +8,7 @@ export const Item = memo(({ product }) => {
   return (
     <li className="product-container">
       <Link className="product" to={`/item/${product.id}`}>
-        <img loading="lazy" decoding="async" className="product__image" src={product.variations[0].images[0]} alt={product.title} />
+        <ImageWithPlaceholder classname={'product__image'} src={product.variations[0].images[0]} alt={product.title} />
         <p className="product__title">{product.title}</p>
         <img className="product__brand" src={brands[product.brand]} alt={product.brand} />
         <p className="product__category">{product.category.toUpperCase()} </p>
