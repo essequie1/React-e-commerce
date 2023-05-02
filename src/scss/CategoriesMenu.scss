@@ -1,0 +1,49 @@
+@import './master';
+
+.categories {
+  position: relative;
+  &__option {
+    color: $white;
+    font-size: $md;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  &-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 5px;
+    &__item {
+      @include link-with-arrow();
+    }
+  }
+}
+
+.categories-container {
+  padding: 20px 25px;
+  position: absolute;
+  background-color: $white;
+  box-shadow: 3px 3px $accent;
+  border: 1px solid $black;
+  display: flex;
+  gap: 3rem;
+  right: 0;
+}
+
+.categories-menu {
+  &__title {
+    font-weight: 600;
+    position: relative;
+    margin-bottom: 5px;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: $black;
+      bottom: -2px;
+      transition: all 200ms;
+    }
+  }
+}

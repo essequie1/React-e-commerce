@@ -1,5 +1,7 @@
 @import './master';
 
 .item-list-container {
-  width: 80vw;
+  width: 100svw;
+  height: calc(100svh - 7rem);
+  overflow-y: scroll;
 }

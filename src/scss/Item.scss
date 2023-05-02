@@ -1,34 +1,40 @@
 @import './master';
 
 .product-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   list-style-type: none;
-  transition: transform 50ms, outline 50ms;
+  transition: box-shadow 100ms, outline 100ms;
   outline: 1px solid transparent;
-  outline-offset: 1rem;
   &:hover {
-    transform: scale(1.025);
-    outline: 1px solid rgb(0, 0, 0, 0.1);
+    outline: 1px solid $black;
+    box-shadow: 5px 5px 0 0 $accent;
+    & .product {
+      &__brand {
+        opacity: 1;
+      }
+      &__variations {
+        opacity: 1;
+      }
+    }
   }
 }
 
 .product {
   width: 20rem;
-  padding-bottom: 0.5rem;
   text-decoration: none;
+  padding-bottom: 10px;
   display: grid;
-  justify-content: center;
-  align-items: center;
-  gap: 10px 0;
+  gap: 5px 0;
   grid-template-areas:
     'image image'
     'image image'
-    'title target'
+    'title title'
+    'category category'
     'variations variations';
-  color: $black;
-  position: relative;
   &__image {
+    padding: 20px;
     grid-area: image;
     height: 20rem;
     object-fit: contain;
@@ -39,30 +45,36 @@
     font-weight: 600;
     font-size: $md;
     letter-spacing: -1px;
-    line-height: $md * 2;
-    text-align: left;
-    width: 100%;
+    text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    justify-self: center;
   }
   &__brand {
     position: absolute;
-    top: 16rem;
-    height: 3rem;
-    max-width: 6rem;
+    opacity: 0.1;
+    top: 10px;
+    left: 10px;
+    height: 2.5rem;
+    width: 4rem;
     object-fit: contain;
-    object-position: bottom;
+    object-position: top left;
+    transition: opacity 100ms;
   }
   &__category {
-    grid-area: target;
-    text-align: right;
+    grid-area: category;
+    justify-self: center;
+    text-align: center;
     font-size: $sm;
   }
   &__variations {
     grid-area: variations;
+    opacity: 0;
     display: flex;
+    justify-self: center;
     gap: 5px;
+    transition: opacity 100ms;
     .color {
       width: 25px;
       height: 25px;
@@ -74,7 +86,7 @@
     top: calc(17rem);
     height: 2rem;
     padding: 0 10px;
-    right: 0;
+    right: 15px;
     font-size: $sm;
     line-height: 2rem;
     font-weight: 600;

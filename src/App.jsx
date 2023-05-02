@@ -26,6 +26,8 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/category/:category" element={<ItemListContainer />} />
+        <Route path="/brand/:brand" element={<ItemListContainer />} />
+        <Route path="/brand/:brand/:category" element={<ItemListContainer />} />
         <Route path="/item/:pid" element={<ItemDetailContainer />} />
         <Route path="/orders/search" element={<OrderSearch />} />
         <Route path="/orders/:oid" element={<OrderContainer />} />

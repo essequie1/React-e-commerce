@@ -7,33 +7,31 @@
   &__images {
     width: 60svw;
     display: flex;
+    gap: 15px;
     align-items: center;
     justify-content: center;
     position: relative;
+    img {
+      user-select: none;
+      pointer-events: none;
+      gap: 5px;
+      border: 1px solid $grey;
+      width: 48%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      padding: 30px;
+      background-color: white;
+    }
     .brand {
-      border: none;
+      border: 0;
       height: 3rem;
-      max-width: 6rem;
+      width: 5rem;
+      padding: 10px;
+      padding: 0;
       object-fit: contain;
       position: absolute;
       left: 30px;
       top: 30px;
-    }
-    img {
-      border: 1px solid $grey;
-      width: 50%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      &:nth-of-type(1) {
-        position: absolute;
-        top: 15px;
-        left: 15px;
-      }
-      &:nth-of-type(2) {
-        position: absolute;
-        bottom: 15px;
-        right: 15px;
-      }
     }
   }
   &__sidebar {
@@ -72,20 +70,28 @@
 
 .variations {
   &__title {
-    font-weight: 600;
+    font-weight: 800;
     margin: 20px 0 15px 0;
   }
+  &__buttons {
+    display: flex;
+    gap: 10px;
+  }
   &__btn {
-    margin-left: 10px;
     width: 40px;
     height: 40px;
-    border-radius: 100%;
     cursor: pointer;
+    transition: outline 100ms;
+    outline: 1px solid transparent;
+    outline-offset: 2px;
+    &:hover {
+      outline: 1px solid $black;
+      outline-offset: 2px;
+    }
     &--active {
-      margin-left: 10px;
+      transition: outline 100ms;
       width: 40px;
       height: 40px;
-      border-radius: 100%;
       outline: 1px solid $black;
       outline-offset: 2px;
     }
@@ -98,7 +104,7 @@
   grid-template-areas: 'title title title' 'minus value plus';
   &__title {
     grid-area: title;
-    font-weight: 600;
+    font-weight: 800;
     margin: 20px 0 15px 0;
   }
   &__value {
@@ -107,29 +113,27 @@
     height: 3rem;
     line-height: 3rem;
     text-align: center;
-    border-top: 1px solid $grey;
-    border-bottom: 1px solid $grey;
+    box-shadow: 3px 3px 0 0 $accent;
+    border: 1px solid $black;
+    font-weight: 600;
   }
   &__btn {
     width: 3rem;
     height: 3rem;
-    font-size: $md;
-    transition: background-color 150ms, scale 150ms;
-    &:nth-of-type(1) {
-      border-radius: 10px 0 0 10px;
-    }
-    &:nth-of-type(2) {
-      border-radius: 0 10px 10px 0;
-    }
+    line-height: 3rem;
+    font-size: $lg;
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    transition: text-shadow 100ms, color 100ms;
     &:disabled {
-      background-color: transparent;
-      border: 1px solid $grey;
+      color: $grey;
     }
     &:enabled {
-      color: $black;
-      background-color: transparent;
-      border: 1px solid $black;
       cursor: pointer;
+      &:hover {
+        text-shadow: 2px 2px $accent;
+      }
     }
   }
 }
@@ -141,13 +145,13 @@
   border-bottom: 1px solid $grey;
   padding-bottom: 30px;
   &__title {
-    font-weight: 600;
+    font-weight: 800;
     margin-bottom: 0.25rem;
     margin: 20px 0 15px 0;
   }
   &__btn-container {
     display: flex;
-    gap: 5px;
+    gap: 10px;
   }
   &__btn {
     width: 3.25rem;
@@ -155,16 +159,20 @@
     font-size: $md;
     cursor: pointer;
     border: 1px solid $grey;
-    background: radial-gradient(circle, $accent 100%, transparent 0) center no-repeat;
-    background-size: 0 0;
-    transition: background 250ms;
+    background-color: transparent;
+    transition: box-shadow 100ms;
+    &:hover {
+      box-shadow: 3px 3px 0 0 $accent;
+      border: 1px solid $black;
+    }
     &--active {
+      border: 1px solid $black;
       height: 3.25rem;
       width: 3.25rem;
       font-size: $md;
-      border-radius: 5px;
-      background-size: 100% 100%;
-      background-color: $accent;
+      background-color: transparent;
+      box-shadow: 3px 3px 0 0 $accent;
+      transition: box-shadow 100ms;
     }
   }
 }

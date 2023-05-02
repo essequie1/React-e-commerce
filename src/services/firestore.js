@@ -1,7 +1,7 @@
 import { getFirestore, collection, getDocs, query, where, updateDoc, doc, setDoc, arrayUnion, arrayRemove, addDoc, getDoc } from 'firebase/firestore';
 import { app } from './firebaseConfig';
 
-const db = getFirestore(app);
+export const db = getFirestore(app);
 // const analytics = getAnalytics(app);
 
 export const getProducts = async () => {

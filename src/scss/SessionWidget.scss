@@ -21,7 +21,6 @@
   top: 100%;
   right: 0;
   display: flex;
-  align-items: center;
   flex-direction: column;
   gap: 10px;
   width: 100px;
@@ -30,14 +29,9 @@
   border-radius: 5px;
   padding: 10px;
   button {
-    color: $black;
-    background-color: transparent;
-    font-size: $md;
-    cursor: pointer;
-    font-weight: 200;
-    transition: all 150ms;
-    &:hover {
-      font-weight: 900;
-    }
+    @include button-with-border();
+    font-weight: 600;
+    width: fit-content;
+    text-align: left;
   }
 }

@@ -9,22 +9,18 @@
   &-icon {
     color: $white;
     transition: all 100ms;
-    &:hover {
-      color: $yellow;
-    }
   }
   &__qty {
-    color: $black;
-    background-color: $blue;
+    background-color: $accent;
     border-radius: 20px;
-    font-size: 0.6rem;
+    font-size: 0.75rem;
     position: absolute;
     display: grid;
     place-items: center;
-    font-weight: 900;
-    top: -5px;
-    right: -5px;
-    width: 15px;
-    height: 15px;
+    font-weight: 600;
+    top: -8px;
+    right: -8px;
+    width: 18px;
+    height: 18px;
   }
 }
