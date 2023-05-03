@@ -13,11 +13,11 @@
 .signup {
   display: grid;
   grid-template-areas:
-    'name surname .'
-    'birth country city'
+    'name surname birth'
+    'city state country'
     'address address zip'
-    'email email .'
-    'password password .'
+    'email emailconf .'
+    'password passwordconf .'
     '. small .'
     '. button .';
   border: 1px solid $grey;
@@ -39,22 +39,31 @@
       grid-area: birth;
     }
     &:nth-child(4) {
-      grid-area: country;
-    }
-    &:nth-child(5) {
       grid-area: city;
     }
+    &:nth-child(5) {
+      grid-area: state;
+    }
     &:nth-child(6) {
-      grid-area: address;
+      grid-area: country;
     }
     &:nth-child(7) {
-      grid-area: zip;
+      grid-area: address;
     }
     &:nth-child(8) {
-      grid-area: email;
+      grid-area: zip;
     }
     &:nth-child(9) {
+      grid-area: email;
+    }
+    &:nth-child(10) {
+      grid-area: emailconf;
+    }
+    &:nth-child(11) {
       grid-area: password;
+    }
+    &:nth-child(12) {
+      grid-area: passwordconf;
     }
     input {
       padding: 5px 15px;

@@ -23,13 +23,20 @@ export const LogIn = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const id = toast.loading('Logging in...');
-    await logIn(formData)
+    toast
+      .promise(logIn(formData), {
+        pending: 'Logging in...',
+        success: 'Logged in Successfully',
+        error: {
+          render({ data }) {
+            return data.message;
+          },
+        },
+      })
       .then(user => getUserData(user.uid))
       .then(data => addUserDataToContext(data))
       .then(() => {
         navigate('/');
-        toast.update(id, { render: 'Logged in Successfully', type: 'success', isLoading: false, autoClose: 3000 });
       });
   };
 

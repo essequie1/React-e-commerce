@@ -11,27 +11,46 @@ export const SignUp = () => {
     surname: '',
     birth: '',
     country: '',
+    state: '',
     city: '',
     zip: '',
     address: '',
     email: '',
     password: '',
   });
+  const [confirmationData, setConfirmationData] = useState({
+    email: '',
+    password: '',
+  });
 
   const handleSubmit = async e => {
     e.preventDefault();
+    if (formData.email !== confirmationData.email) return toast.error("Mails don't match.");
+    if (formData.password !== confirmationData.password) return toast.error("Passwords don't match.");
+
     await toast
       .promise(signUp(formData), {
         pending: 'Creating Account...',
         success: 'Account created, please log in',
-        error: 'An error occured, please try again',
+        error: {
+          render({ data }) {
+            return data.message;
+          },
+        },
       })
-      .finally(() => navigate('/login'));
+      .then(() => navigate('/login'));
   };
 
   const handleOnChange = e => {
     setFormData({
       ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleConfirmations = e => {
+    setConfirmationData({
+      ...confirmationData,
       [e.target.name]: e.target.value,
     });
   };
@@ -53,12 +72,16 @@ export const SignUp = () => {
           <input required value={formData.birth} type="date" name="birth" onChange={e => handleOnChange(e)} />
         </label>
         <label>
-          Country
-          <input required value={formData.country} type="text" name="country" onChange={e => handleOnChange(e)} />
-        </label>
-        <label>
           City
           <input required value={formData.city} type="text" name="city" onChange={e => handleOnChange(e)} />
+        </label>
+        <label>
+          State / Province
+          <input required value={formData.state} type="text" name="state" onChange={e => handleOnChange(e)} />
+        </label>
+        <label>
+          Country
+          <input required value={formData.country} type="text" name="country" onChange={e => handleOnChange(e)} />
         </label>
         <label>
           Address
@@ -73,8 +96,34 @@ export const SignUp = () => {
           <input required value={formData.email} type="email" name="email" onChange={e => handleOnChange(e)} />
         </label>
         <label>
+          Email Confirmation
+          <input
+            autoComplete="off"
+            onPaste={e => e.preventDefault()}
+            onDrop={e => e.preventDefault()}
+            required
+            value={confirmationData.email}
+            type="email"
+            name="email"
+            onChange={e => handleConfirmations(e)}
+          />
+        </label>
+        <label>
           Password
-          <input required value={formData.password} type="password" name="password" onChange={e => handleOnChange(e)} />
+          <input minLength={6} required value={formData.password} type="password" name="password" onChange={e => handleOnChange(e)} />
+        </label>
+        <label>
+          Password Confirmation
+          <input
+            autoComplete="off"
+            onPaste={e => e.preventDefault()}
+            onDrop={e => e.preventDefault()}
+            required
+            value={confirmationData.password}
+            type="password"
+            name="password"
+            onChange={e => handleConfirmations(e)}
+          />
         </label>
         <small>All fields are required</small>
         <button type="submit">Join</button>
