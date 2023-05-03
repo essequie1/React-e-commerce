@@ -10,7 +10,6 @@ export const OrderContainer = () => {
   const [ETA, setETA] = useState();
   const { oid } = useParams();
   const navigation = useNavigate();
-  console.log(window.history);
 
   useEffect(() => {
     getOrderByID(oid)
@@ -31,7 +30,7 @@ export const OrderContainer = () => {
           <strong>ORDER: {oid}</strong>
           <small>
             Save this code to request order information in this{' '}
-            <Link target="_blank" to={`/orders/search`}>
+            <Link target="_blank" to={`/ordersearch`}>
               link
             </Link>
             .

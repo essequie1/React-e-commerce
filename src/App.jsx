@@ -29,7 +29,7 @@ function App() {
         <Route path="/brand/:brand" element={<ItemListContainer />} />
         <Route path="/brand/:brand/:category" element={<ItemListContainer />} />
         <Route path="/item/:pid" element={<ItemDetailContainer />} />
-        <Route path="/orders/search" element={<OrderSearch />} />
+        <Route path="/ordersearch" element={<OrderSearch />} />
         <Route path="/orders/:oid" element={<OrderContainer />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
