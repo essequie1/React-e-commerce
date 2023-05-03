@@ -3,12 +3,13 @@
 .wishlist {
   position: absolute;
   background-color: white;
-  border: 1px solid $grey;
-  border-radius: 5px;
+  border: 2px solid $black;
+  box-shadow: 3px 3px $accent;
   top: 120%;
   right: 0;
-  width: 300px;
+  width: 350px;
   padding: 10px;
-  max-height: 25rem;
+  min-height: 5rem;
+  max-height: 21rem;
   overflow-y: scroll;
 }

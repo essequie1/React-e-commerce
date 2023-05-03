@@ -11,16 +11,15 @@
     width: 6rem;
     height: 6rem;
     object-fit: contain;
-    border: 1px solid $grey;
+    border: 2px solid $black;
   }
   &__title {
-    width: 10rem;
+    width: 12rem;
   }
   &__select {
-    border-radius: 5px;
     background-color: transparent;
     padding: 5px;
-    border: 1px solid $black;
+    border: 2px solid $black;
     width: 4rem;
     cursor: pointer;
   }
@@ -34,14 +33,14 @@
     }
   }
   &__input {
-    border-radius: 5px;
     width: 4rem;
     padding: 5px;
-    border: 1px solid $black;
+    border: 2px solid $black;
   }
   &__price {
     font-weight: 600;
-    width: 5rem;
+    width: 7rem;
+    text-align: right;
   }
   &__remove {
     background: transparent;

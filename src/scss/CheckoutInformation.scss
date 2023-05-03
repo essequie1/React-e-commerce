@@ -44,9 +44,12 @@
       font-size: 0.8rem;
       font-weight: 600;
       input {
-        border: 1px solid $grey;
-        border-radius: 15px;
+        border: 2px solid $black;
         padding: 5px 10px;
+        &:focus {
+          outline: none;
+          box-shadow: 3px 3px $accent;
+        }
       }
     }
     button {

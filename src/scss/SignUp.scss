@@ -22,7 +22,6 @@
     '. button .';
   border: 1px solid $grey;
   padding: 20px;
-  border-radius: 5px;
   gap: 20px 25px;
   label {
     font-size: 1rem;
@@ -58,11 +57,14 @@
       grid-area: password;
     }
     input {
-      background-color: $grey;
-      border-radius: 25px;
       padding: 5px 15px;
       margin-top: 5px;
       font-size: 1.15rem;
+      border: 2px solid $black;
+      &:focus {
+        outline: none;
+        box-shadow: 3px 3px $accent;
+      }
     }
   }
   small {

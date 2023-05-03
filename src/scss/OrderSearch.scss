@@ -17,8 +17,11 @@
       font-weight: 600;
       input {
         padding: 10px 15px;
-        border-radius: 50px;
-        border: 1px solid $grey;
+        border: 2px solid $black;
+        &:focus {
+          outline: none;
+          box-shadow: 3px 3px $accent;
+        }
       }
     }
     button {

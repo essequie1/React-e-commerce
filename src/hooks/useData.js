@@ -21,7 +21,7 @@ const getLocalCartPrice = () => {
 
 // Reducer for calculating the cart total amount.
 const calculateCartTotal = cart => {
-  const cartPrices = cart.reduce((acc, prod) => acc + prod.price * prod.selectedQuantity, 0);
+  const cartPrices = cart.reduce((acc, prod) => acc + prod.selectedQuantity * prod.price, 0);
   return cartPrices.toFixed(2);
 };
 
@@ -55,6 +55,7 @@ export const reducer = (state, action) => {
 
     // Add a single product to the cart.
     case actions.ADD_PRODUCT:
+      console.log(action.product);
       return {
         ...state,
         cart: [...state.cart, action.product],

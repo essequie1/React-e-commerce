@@ -9,10 +9,13 @@
     flex-direction: column;
     padding: 0 10px;
     input {
-      border: 1px solid $grey;
+      border: 2px solid $black;
       padding: 8px 15px;
-      border-radius: 15px;
       margin-top: 5px;
+      &:focus {
+        outline: none;
+        box-shadow: 3px 3px $accent;
+      }
     }
   }
   &__submit {
@@ -20,26 +23,3 @@
     align-self: center;
   }
 }
-// &__user {
-//   font-size: 0.8rem;
-//   padding: 10px;
-// }
-// &__form {
-//   display: flex;
-//   gap: 15px;
-//   flex-direction: column;
-//   padding: 0 10px;
-//   label {
-//     display: flex;
-//     flex-direction: column;
-//     input {
-//       border: 1px solid $grey;
-//       padding: 5px 10px;
-//       border-radius: 15px;
-//     }
-//   }
-// }
-// &__payment {
-//   @include rounded-button-fill($black, $white, 15px);
-//   align-self: center;
-// }

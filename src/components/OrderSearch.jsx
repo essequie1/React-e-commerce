@@ -29,7 +29,7 @@ export const OrderSearch = () => {
     <div className="orderSearch-container">
       <form onSubmit={handleSearchOrder}>
         <label>
-          Search by OrderID:
+          Search your Order
           <input ref={inputRef} placeholder="OP-45123..." style={{ width: '500px' }} required name="id" type="text" />
         </label>
         <button disabled={isSearching} type="submit">

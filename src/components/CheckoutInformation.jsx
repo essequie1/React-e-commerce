@@ -25,7 +25,7 @@ export const CheckoutInformation = () => {
           You have a code?
           <input type="text" />
         </label>
-        <button>Apply</button>
+        <button onClick={e => e.preventDefault()}>Apply</button>
       </div>
     </div>
   );
