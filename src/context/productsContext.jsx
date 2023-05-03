@@ -13,7 +13,6 @@ export const ProductsProvider = ({ children }) => {
     data: state.data,
     cart: state.cart,
     selectedCategory: state.selectedCategory,
-    sizes: state.sizes,
     cartTotal: state.cartTotal,
     addData: data => {
       dispatch({ type: actions.ADD_DATA, data });

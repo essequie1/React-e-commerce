@@ -1,9 +1,10 @@
-import { AddToWishlist, ImageWithPlaceholder, ItemDetailCounter } from './componentsIndex';
+import { AddToWishlist, ItemDetailCounter } from './componentsIndex';
 import { useProductsContext } from '../context/productsContext';
 import { useState } from 'react';
 import { brands } from '../assets/imagesIndex';
 import { checkCart } from '../helpers/checkCart';
 import { toast } from 'react-toastify';
+import { getSizes } from '../helpers/getSizes';
 import '../scss/ItemDetail.scss';
 
 export const ItemDetail = ({ product }) => {
@@ -14,6 +15,7 @@ export const ItemDetail = ({ product }) => {
   const prodID = product.id + product.variations[variation].color;
   const prodVariation = product.variations[variation];
   const isItemInCart = checkCart(cart, prodID);
+  const productSizes = getSizes(product.category);
 
   const handleAddToCart = () => {
     if (size === '') {
@@ -74,7 +76,7 @@ export const ItemDetail = ({ product }) => {
         <div className="sizes">
           <p className="sizes__title">SIZES:</p>
           <div className="sizes__btn-container">
-            {sizes.map(sizebtn => (
+            {productSizes.map(sizebtn => (
               <button className={size === sizebtn ? 'sizes__btn--active' : 'sizes__btn'} key={sizebtn} onClick={() => setSize(sizebtn)}>
                 {sizebtn}
               </button>

@@ -29,7 +29,6 @@ export const initialState = {
   data: [],
   cart: getLocalCartData(),
   selectedCategory: [],
-  sizes: ['S', 'M', 'L', 'XL', 'XXL'],
   cartTotal: getLocalCartPrice(),
 };
 

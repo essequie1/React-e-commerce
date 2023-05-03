@@ -1,8 +1,10 @@
 import { useProductsContext } from '../context/productsContext';
+import { getSizes } from '../helpers/getSizes';
 import '../scss/CheckoutProduct.scss';
 
 export const CheckoutProduct = ({ prod }) => {
-  const { changeProductSize, changeProductQuantity, removeFromCart, sizes, cart } = useProductsContext();
+  const { changeProductSize, changeProductQuantity, removeFromCart, cart } = useProductsContext();
+  const productSizes = getSizes(prod.category);
 
   const handleQuantityChange = (e, prodId) => {
     if (e.target.validity.valid) {
@@ -16,7 +18,7 @@ export const CheckoutProduct = ({ prod }) => {
       <h4 className="checkout-product__title">{prod.title}</h4>
       <select className="checkout-product__select" defaultValue={prod.selectedSize} onChange={e => changeProductSize(prod.id, e.target.value)}>
         {prod.selectedSize == '' ? <option value="" disabled hidden selected></option> : prod.selectedSize}
-        {sizes.map(size => (
+        {productSizes.map(size => (
           <option className="checkout-product__option" key={size} value={size}>
             {size}
           </option>

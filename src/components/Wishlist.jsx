@@ -13,7 +13,7 @@ export const Wishlist = () => {
           ))}
         </>
       ) : (
-        <p>Your whislist is empty</p>
+        <p className="wishlist__empty">Your whislist is empty</p>
       )}
     </div>
   );

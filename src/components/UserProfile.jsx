@@ -37,7 +37,7 @@ export const UserProfile = () => {
             <p>Birthday</p>
             <h3>{new Date(userData.birth).toLocaleDateString('ca-gregory')}</h3>
             <p>Address</p>
-            <h3>{`${userData.address}, ${userData.city}, ${userData.country} (${userData.zip})`}</h3>
+            <h3>{`${userData.address}, ${userData.city}, ${userData.state}, ${userData.country} (${userData.zip})`}</h3>
             <p>Orders</p>
             {loading ? (
               <Loading size={'small'} />

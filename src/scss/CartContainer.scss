@@ -89,7 +89,7 @@
 
 @keyframes showMenu {
   0% {
-    display: block;
+    visibility: visible;
   }
   50% {
     transform: translateX(0px);
@@ -107,6 +107,6 @@
     transform: translateX(0px);
   }
   100% {
-    display: none;
+    visibility: hidden;
   }
 }

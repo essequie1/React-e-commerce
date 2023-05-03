@@ -151,27 +151,32 @@
   }
   &__btn-container {
     display: flex;
+    max-width: 80%;
+    flex-wrap: wrap;
     gap: 10px;
   }
   &__btn {
-    width: 3.25rem;
+    min-width: 3.25rem;
+    padding: 0 10px;
     height: 3.25rem;
     font-size: $md;
     cursor: pointer;
-    border: 1px solid $grey;
     background-color: transparent;
     transition: box-shadow 100ms;
     &:hover {
       box-shadow: 3px 3px 0 0 $accent;
-      border: 2px solid $black;
+      outline-offset: -2px;
+      outline: 2px solid $black;
     }
     &--active {
-      border: 2px solid $black;
+      min-width: 3.25rem;
+      padding: 0 10px;
       height: 3.25rem;
-      width: 3.25rem;
       font-size: $md;
       background-color: transparent;
       box-shadow: 3px 3px 0 0 $accent;
+      outline-offset: -2px;
+      outline: 2px solid $black;
       transition: box-shadow 100ms;
     }
   }
