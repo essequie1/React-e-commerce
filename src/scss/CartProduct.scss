@@ -3,14 +3,14 @@
 .cart-product {
   display: flex;
   align-items: center;
-  gap: 10px;
-  width: 100%;
+  gap: 0.5rem;
+  width: 98%;
   img {
     height: 4rem;
     width: 4rem;
     object-fit: contain;
     border: 1px solid $grey;
-    padding: 5px;
+    padding: 0.5rem;
   }
   &__title {
     font-size: 1rem;
@@ -32,7 +32,7 @@
     flex: 1;
     font-weight: 600;
     border-right: 1px solid $grey;
-    padding-right: 10px;
+    padding-right: 0.5rem;
     text-align: right;
   }
   &__button {

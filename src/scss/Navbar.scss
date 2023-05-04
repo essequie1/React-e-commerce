@@ -67,7 +67,7 @@
   &__container {
     transition: opacity 100ms;
     opacity: 0;
-    padding: 10px 2rem;
+    padding: 0.5rem 2rem;
     top: 100%;
     right: 0;
     width: fit-content;
@@ -106,13 +106,13 @@
   top: calc(100%);
   position: absolute;
   background-color: $white;
-  padding: 20px;
+  padding: 1.5rem;
   border: 1px solid $black;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 1rem;
   transition: opacity 100ms;
-  box-shadow: 5px 5px 0 0 $accent;
+  box-shadow: 3px 3px 0 0 $accent;
 
   & a {
     @include link-with-arrow();

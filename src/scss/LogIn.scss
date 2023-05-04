@@ -11,18 +11,17 @@
     align-items: center;
     flex-direction: column;
     border: 1px solid $grey;
-    gap: 20px;
-    padding: 15px;
+    gap: 1.5rem;
+    padding: 1rem;
     label {
       font-size: 1rem;
       font-weight: 600;
-      letter-spacing: 0.5px;
       display: flex;
       flex-direction: column;
       input {
-        padding: 5px 15px;
-        margin-top: 5px;
-        font-size: 1.15rem;
+        width: 15rem;
+        padding: 0.5rem 1rem;
+        margin-top: 0.5rem;
         border: 2px solid $black;
         &:focus {
           outline: none;
@@ -33,6 +32,6 @@
   }
   button {
     justify-self: center;
-    @include rounded-button-fill($black, $white, 10px 15px);
+    @include rounded-button-fill($black, $white, 0.5rem 1rem);
   }
 }

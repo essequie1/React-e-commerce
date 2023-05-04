@@ -45,3 +45,15 @@
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
 }
+
+@media only screen and (min-width: 1025px) {
+  :root {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (min-width: 1281px) {
+  :root {
+    font-size: 16px;
+  }
+}

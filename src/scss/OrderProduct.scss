@@ -3,21 +3,29 @@
 .orderProduct {
   display: flex;
   align-items: center;
-  gap: 25px;
-  padding: 15px;
-  border-bottom: 1px solid $grey;
-  &:last-of-type {
-    border-bottom: none;
-  }
+  justify-content: space-around;
+  gap: 1.5rem;
+  padding: 0.25rem 0.5rem;
+  border: 2px solid $black;
+  box-shadow: 3px 3px $accent;
+  margin-bottom: 1rem;
+  width: 32rem;
   &__image {
     height: 5rem;
     width: 5rem;
-    padding: 5px;
+    padding: 0.5rem;
     object-fit: contain;
-    border: 2px solid $black;
   }
   &__title {
-    width: 200px;
-    flex-grow: 2;
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    justify-self: center;
+  }
+  &__price {
+    text-align: right;
+    font-weight: 600;
+    width: 8rem;
   }
 }

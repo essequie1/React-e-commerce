@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import '../scss/OrderContainer.scss';
 
 export const OrderContainer = () => {
-  const [orderProducts, setOrderProducts] = useState({});
+  const [orderProducts, setOrderProducts] = useState([]);
   const [ETA, setETA] = useState();
   const { oid } = useParams();
   const navigation = useNavigate();
@@ -42,6 +42,10 @@ export const OrderContainer = () => {
         </span>
         <div className="order__products">
           {orderProducts.length > 0 ? orderProducts.map(product => <OrderProduct key={product.id} product={product} />) : <Loading />}
+        </div>
+        <div className="order__total">
+          <p>TOTAL</p>
+          <p>${orderProducts.reduce((acc, p) => acc + p.price * p.selectedQuantity, 0).toFixed(2)}</p>
         </div>
         <Link className="order__link" to={'/'}>
           Continue Shopping<span className="material-symbols-outlined">arrow_forward</span>

@@ -20,9 +20,14 @@ export const CartContainer = ({ isShown, handleShowCart }) => {
     }
   };
 
+  const handleCartDisplay = () => {
+    handleShowCart();
+    setConfirmation(false);
+  };
+
   return (
     <div className={isShown ? 'cart-container --active' : 'cart-container --inactive'}>
-      <button className="cart-container__closeBtn" onClick={handleShowCart}>
+      <button className="cart-container__closeBtn" onClick={handleCartDisplay}>
         <span className="material-symbols-outlined">close</span>
       </button>
       <p className="cart-container__title">Your Cart</p>

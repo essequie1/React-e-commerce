@@ -40,7 +40,7 @@ export const UserProfile = () => {
             <h3>{`${userData.address}, ${userData.city}, ${userData.state}, ${userData.country} (${userData.zip})`}</h3>
             <p>Orders</p>
             {loading ? (
-              <Loading size={'small'} />
+              <Loading style={{ minHeight: '10rem' }} size={'small'} />
             ) : (
               <div className="profile__orders">
                 {userOrders.length > 0 ? (
@@ -52,7 +52,7 @@ export const UserProfile = () => {
                     </div>
                   ))
                 ) : (
-                  <p>You don't have pending orders...</p>
+                  <p className="profile__orders-empty">You don't have pending orders...</p>
                 )}
               </div>
             )}

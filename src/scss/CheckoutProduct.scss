@@ -2,30 +2,34 @@
 
 .checkout-product {
   display: flex;
-  gap: 30px;
+  gap: 2rem;
   align-items: center;
   justify-content: space-around;
   height: 7rem;
   padding: 0 20px;
+  border: 2px solid $black;
+  box-shadow: 3px 3px $accent;
+  margin-bottom: 1rem;
+  width: 95%;
   &__image {
     width: 6rem;
     height: 6rem;
     object-fit: contain;
-    border: 2px solid $black;
+    padding: 0.5rem;
   }
   &__title {
     width: 12rem;
   }
   &__select {
     background-color: transparent;
-    padding: 5px;
+    padding: 0.5rem;
     border: 2px solid $black;
     width: 4rem;
     cursor: pointer;
   }
   &__option {
     background-color: $white;
-    padding: 5px;
+    padding: 0.5rem;
     border: 1px solid $black;
     cursor: pointer;
     &:hover {
@@ -34,7 +38,7 @@
   }
   &__input {
     width: 4rem;
-    padding: 5px;
+    padding: 0.5rem;
     border: 2px solid $black;
   }
   &__price {

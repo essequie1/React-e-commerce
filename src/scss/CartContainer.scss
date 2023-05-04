@@ -8,17 +8,17 @@
     'total total'
     'bottom bottom';
   grid-template-rows: 3rem 1fr 3rem 4rem;
-  gap: 20px;
+  gap: 1.25rem;
   position: absolute;
   z-index: 4000;
-  width: 450px;
+  width: 28rem;
   height: 100svh;
   background-color: white;
   border-left: 2px solid $black;
   top: 0;
   left: 100%;
   transition: all 150ms;
-  padding: 15px;
+  padding: 1rem;
   &__closeBtn {
     grid-area: button;
     height: 2rem;
@@ -48,7 +48,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 1rem;
     overflow-y: scroll;
     overflow-x: hidden;
   }
@@ -58,7 +58,7 @@
     justify-content: space-between;
     border-top: 1px solid $grey;
     font-size: 1.25rem;
-    padding: 0 15px;
+    padding: 0 1rem;
     font-weight: 600;
     line-height: 3rem;
   }
@@ -68,10 +68,11 @@
     justify-content: space-between;
     align-items: center;
     .checkout {
-      @include rounded-button-fill($black, $white, 15px 15px);
+      @include rounded-button-fill($black, $white, 1rem 1rem);
+      line-height: 1rem;
     }
     .clear-cart {
-      @include rounded-button-border($black, $black, 15px 15px);
+      @include rounded-button-border($black, $black, 1rem 1rem);
       span {
         line-height: 1rem;
         vertical-align: middle;
@@ -95,13 +96,13 @@
     transform: translateX(0px);
   }
   100% {
-    transform: translateX(-450px);
+    transform: translateX(-28rem);
   }
 }
 
 @keyframes hideMenu {
   0% {
-    transform: translateX(-450px);
+    transform: translateX(-28rem);
   }
   50% {
     transform: translateX(0px);

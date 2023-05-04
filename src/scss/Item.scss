@@ -24,9 +24,9 @@
 .product {
   width: 20rem;
   text-decoration: none;
-  padding-bottom: 10px;
+  padding-bottom: 0.5rem;
   display: grid;
-  gap: 5px 0;
+  gap: 0.5rem 0;
   grid-template-areas:
     'image image'
     'image image'
@@ -35,7 +35,7 @@
     'variations variations';
   color: $black;
   &__image {
-    padding: 20px;
+    padding: 1.5rem;
     grid-area: image;
     height: 20rem;
     object-fit: contain;
@@ -55,8 +55,8 @@
   &__brand {
     position: absolute;
     opacity: 0.1;
-    top: 10px;
-    left: 10px;
+    top: 0.5rem;
+    left: 0.5rem;
     height: 2.5rem;
     width: 4rem;
     object-fit: contain;
@@ -74,19 +74,19 @@
     opacity: 0;
     display: flex;
     justify-self: center;
-    gap: 5px;
+    gap: 0.5rem;
     transition: opacity 100ms;
     .color {
-      width: 25px;
-      height: 25px;
+      width: 1.5rem;
+      height: 1.5rem;
     }
   }
   &__price {
     position: absolute;
     top: calc(17rem);
     height: 2rem;
-    padding: 0 10px;
-    right: 15px;
+    padding: 0 0.5rem;
+    right: 1rem;
     font-size: $sm;
     line-height: 2rem;
     font-weight: 600;

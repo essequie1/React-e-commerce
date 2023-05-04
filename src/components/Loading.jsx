@@ -2,11 +2,11 @@ import loadingBig from '../assets/loading.gif';
 import loadingSmall from '../assets/loading-small.gif';
 import '../scss/Loading.scss';
 
-export const Loading = ({ size }) => {
+export const Loading = ({ size, style }) => {
   return (
     <>
       {size === 'small' ? (
-        <div className="loading--small">
+        <div style={style} className="loading--small">
           <img className="loading--small__img" src={loadingSmall} alt="" />
         </div>
       ) : (

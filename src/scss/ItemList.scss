@@ -3,7 +3,7 @@
 .item-list {
   margin: 2rem;
   display: grid;
-  gap: 5rem;
+  gap: 2rem 5rem;
   grid-template-columns: repeat(auto-fill, 20rem);
   justify-content: center;
 }

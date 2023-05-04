@@ -2,45 +2,46 @@
 
 .details {
   width: 100svw;
-  height: calc(100svh - 7rem);
   display: flex;
   &__images {
     width: 60svw;
     display: flex;
-    gap: 15px;
+    gap: 1rem;
     align-items: center;
     justify-content: center;
     position: relative;
     img {
       user-select: none;
       pointer-events: none;
-      gap: 5px;
+      gap: 0.5rem;
       border: 1px solid $grey;
       width: 48%;
       aspect-ratio: 1 / 1;
       object-fit: contain;
-      padding: 30px;
+      padding: 2rem;
       background-color: white;
     }
     .brand {
       border: 0;
       height: 3rem;
       width: 5rem;
-      padding: 10px;
+      padding: 1rem;
       padding: 0;
       object-fit: contain;
       position: absolute;
-      left: 30px;
-      top: 30px;
+      left: 2.5rem;
+      top: 2.5rem;
     }
   }
   &__sidebar {
     width: 40svw;
+    height: calc(100svh - 7rem);
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
-    border: 1px solid $grey;
+    border-left: 1px solid $grey;
     position: relative;
-    padding: 40px;
+    padding: 2.5rem;
   }
 }
 
@@ -48,7 +49,7 @@
   display: flex;
   flex-direction: column;
   align-items: left;
-  gap: 2rem;
+  gap: 1rem;
   &__title {
     font-size: $xl;
     line-height: $xl * 2;
@@ -63,23 +64,24 @@
   }
   &__price {
     font-weight: 900;
-    margin: 1rem 0;
     font-size: $lg;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
   }
 }
 
 .variations {
   &__title {
     font-weight: 800;
-    margin: 20px 0 15px 0;
+    margin: 1.5rem 0 1rem 0;
   }
   &__buttons {
     display: flex;
-    gap: 15px;
+    gap: 1rem;
   }
   &__btn {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
     cursor: pointer;
     transition: outline 100ms;
     outline: 2px solid transparent;
@@ -90,8 +92,8 @@
     }
     &--active {
       transition: outline 100ms;
-      width: 40px;
-      height: 40px;
+      width: 2.5rem;
+      height: 2.5rem;
       outline: 2px solid $black;
       outline-offset: 2px;
     }
@@ -105,7 +107,7 @@
   &__title {
     grid-area: title;
     font-weight: 800;
-    margin: 20px 0 15px 0;
+    margin: 1.5rem 0 1rem 0;
   }
   &__value {
     grid-area: value;
@@ -143,21 +145,21 @@
   flex-direction: column;
   justify-content: center;
   border-bottom: 1px solid $grey;
-  padding-bottom: 30px;
+  padding-bottom: 1rem;
   &__title {
     font-weight: 800;
     margin-bottom: 0.25rem;
-    margin: 20px 0 15px 0;
+    margin: 1.5rem 0 1rem 0;
   }
   &__btn-container {
     display: flex;
     max-width: 80%;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 0.5rem;
   }
   &__btn {
     min-width: 3.25rem;
-    padding: 0 10px;
+    padding: 0 0.5rem;
     height: 3.25rem;
     font-size: $md;
     cursor: pointer;
@@ -170,7 +172,7 @@
     }
     &--active {
       min-width: 3.25rem;
-      padding: 0 10px;
+      padding: 0 0.5rem;
       height: 3.25rem;
       font-size: $md;
       background-color: transparent;
@@ -187,10 +189,10 @@
   gap: 1rem;
   margin-top: 2rem;
   &__cart {
-    @include rounded-button-fill($black, $white, 15px 20px);
+    @include rounded-button-fill($black, $white, 1rem 1rem);
   }
   &__wishlist {
-    @include rounded-button-border($black, $black, 15px 15px);
+    @include rounded-button-border($black, $black, 1rem 1rem);
     .wishlisted {
       font-variation-settings: 'FILL' 1;
     }

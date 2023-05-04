@@ -20,7 +20,6 @@ $sm: 0.875rem;
 
 @mixin rounded-button-fill($background, $color, $padding) {
   font-weight: 600;
-  font-size: 1rem;
   width: fit-content;
   padding: $padding;
   background-color: $background;
@@ -28,7 +27,6 @@ $sm: 0.875rem;
   cursor: pointer;
   box-shadow: 3px 3px 0 0 $accent;
   transition: box-shadow 100ms;
-  box-shadow: 3px 3px 0 0 $accent;
   &:active {
     box-shadow: 0px 0px 0 0 $accent;
   }
@@ -40,7 +38,6 @@ $sm: 0.875rem;
 
 @mixin rounded-button-border($border, $color, $padding) {
   font-weight: 600;
-  font-size: 1rem;
   width: fit-content;
   padding: $padding;
   background-color: transparent;
@@ -65,11 +62,11 @@ $sm: 0.875rem;
   color: $black;
   text-decoration: none;
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: center;
   font-weight: 400;
   span {
-    width: 16px;
+    width: 1rem;
     transform: translateX(-5px);
     transition: all 200ms;
   }
